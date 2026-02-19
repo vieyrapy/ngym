@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
 # 1. CONFIGURACIÓN DE PÁGINA
 st.set_page_config(
@@ -8,8 +9,45 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# 2. ESTILOS CSS PREMIUM DARK MODE
-# IMPORTANTE: Sin líneas en blanco intermedias para evitar el bug del Markdown de Streamlit
+# 2. INYECCIÓN DEL CONTADOR FLOTANTE (JS Nativo)
+# Esto crea una barra fija en la parte superior sin recargar Streamlit
+components.html("""
+<script>
+    // Evitar duplicados si Streamlit recarga la interfaz
+    if(!window.parent.document.getElementById('promo-banner-container')) {
+        const banner = window.parent.document.createElement('div');
+        banner.id = 'promo-banner-container';
+        // Estilos de la barra flotante de urgencia
+        banner.style.cssText = 'position:fixed; top:0; left:0; width:100%; background:linear-gradient(90deg,#ff7300,#dc2626); color:white; text-align:center; padding:12px 10px; font-weight:900; z-index:999999; font-family:"Montserrat",sans-serif; font-size:1rem; letter-spacing:1px; box-shadow:0 4px 20px rgba(0,0,0,0.6); text-transform:uppercase;';
+        banner.innerHTML = '⏳ LA OFERTA DE MATRÍCULA GRATIS TERMINA EN: <span id="gym-countdown" style="background:rgba(0,0,0,0.2); padding:3px 10px; border-radius:6px; font-variant-numeric:tabular-nums; margin-left:8px; font-size:1.2rem;">15:00</span>';
+        
+        window.parent.document.body.prepend(banner);
+        
+        // Lógica del contador (Evergreen 15 minutos con memoria)
+        let endTime = localStorage.getItem('gymPromoEnd');
+        if(!endTime || parseInt(endTime) < Date.now()){
+            endTime = Date.now() + 15 * 60000; // 15 minutos en milisegundos
+            localStorage.setItem('gymPromoEnd', endTime);
+        }
+        
+        setInterval(()=>{
+            let el = window.parent.document.getElementById('gym-countdown');
+            if(!el) return;
+            let diff = parseInt(endTime) - Date.now();
+            if(diff <= 0){ 
+                el.innerText = "00:00"; 
+                return; 
+            }
+            let m = Math.floor(diff / 60000);
+            let s = Math.floor((diff % 60000) / 1000);
+            el.innerText = (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+        }, 1000);
+    }
+</script>
+""", height=0, width=0)
+
+# 3. ESTILOS CSS PREMIUM DARK MODE
+# Sin líneas en blanco y con margen superior extra para la barra flotante
 st.markdown("""
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;0,900;1,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -18,6 +56,8 @@ st.markdown("""
 header {visibility: hidden;}
 footer {visibility: hidden;}
 html, body, .stApp { font-family: 'Montserrat', sans-serif !important; background-color: #0b0f19 !important; color: #f8fafc !important; scroll-behavior: smooth; }
+.stApp > header { display: none !important; }
+.block-container { padding-top: 4rem !important; } /* Margen para no tapar el logo con el contador */
 .gradient-text { background: linear-gradient(135deg, #ff7300 0%, #ffba00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; }
 .hero-title { font-size: 3.5rem; line-height: 1.05; font-weight: 900; text-transform: uppercase; letter-spacing: -0.05em; text-align: center; margin-bottom: 1.5rem; color: #ffffff !important; }
 .section-title { font-size: 2.5rem; text-align: center; margin: 4rem 0 2rem 0; font-weight: 900; text-transform: uppercase; font-style: italic; letter-spacing: -0.03em; color: #ffffff !important; }
@@ -42,7 +82,7 @@ div[data-testid="stForm"] { border: 1px solid #1f2937 !important; padding: 2rem 
 </style>
 """, unsafe_allow_html=True)
 
-# 3. TOP BAR
+# 4. TOP BAR
 st.markdown("""
 <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0;">
 <div style="font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; color: #ffffff;">
@@ -55,7 +95,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 st.divider()
 
-# 4. HERO SECTION
+# 5. HERO SECTION
 st.markdown("""
 <div style="text-align: center; padding: 2rem 0;">
 <div style="display: inline-block; background: rgba(255,115,0,0.1); color: #ffba00; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 800; margin-bottom: 1.5rem; border: 1px solid rgba(255,115,0,0.3); font-size: 0.9rem;">
@@ -83,7 +123,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 5. PROGRAMAS EXCLUSIVOS
+# 6. PROGRAMAS EXCLUSIVOS
 st.markdown("<div class='section-title'>Retos de <span class='gradient-text'>Alto Impacto</span></div>", unsafe_allow_html=True)
 
 st.markdown("""
@@ -121,7 +161,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 6. PLANES DE MEMBRESÍA
+# 7. PLANES DE MEMBRESÍA
 st.markdown("<div class='section-title'>Planes de <span class='gradient-text'>Membresía</span></div>", unsafe_allow_html=True)
 
 st.markdown("""
@@ -172,7 +212,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 7. CLASES EXCLUSIVAS
+# 8. CLASES EXCLUSIVAS
 st.markdown("<div class='section-title'>Clases Grupales <span class='gradient-text'>Incluidas</span></div>", unsafe_allow_html=True)
 
 st.markdown("""
@@ -198,7 +238,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 8. PREGUNTAS FRECUENTES
+# 9. PREGUNTAS FRECUENTES
 st.markdown("<div class='section-title'>Preguntas <span class='gradient-text'>Frecuentes</span></div>", unsafe_allow_html=True)
 
 faqs = [
@@ -224,7 +264,7 @@ for q, a in faqs:
     with st.expander(f"**{q}**"):
         st.write(a)
 
-# 9. SECCIÓN DE CONTACTO Y CONVERSIÓN
+# 10. SECCIÓN DE CONTACTO Y CONVERSIÓN
 st.markdown("<div id='reserva'></div>", unsafe_allow_html=True)
 st.markdown("<div class='section-title'>Agenda tu <span class='gradient-text'>Prueba Gratis</span></div>", unsafe_allow_html=True)
 
@@ -251,7 +291,7 @@ with st.form("contacto_form"):
 
 st.divider()
 
-# 10. FOOTER
+# 11. FOOTER
 st.markdown("""
 <div style="text-align: center; padding: 2rem 0;">
 <h2 style="font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; color: #ffffff; margin-bottom: 1rem;">
