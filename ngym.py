@@ -110,7 +110,7 @@ Deja de buscar excusas. Fusionamos entrenamiento de alta intensidad con tecnolog
 
 col_h1, col_h2 = st.columns(2)
 with col_h1:
-    st.markdown("<a href='#reserva' class='btn-premium'>¡EMPEZAR AHORA! ➔</a>", unsafe_allow_html=True)
+    st.markdown("<a href='#planes' class='btn-premium'>¡EMPEZAR AHORA! ➔</a>", unsafe_allow_html=True)
 with col_h2:
     st.markdown("<a href='#reserva' class='btn-outline'>PROBAR 1 DÍA GRATIS</a>", unsafe_allow_html=True)
 
@@ -121,7 +121,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # 6. PROGRAMAS EXCLUSIVOS
-st.markdown("<div class='section-title'>Retos de <span class='gradient-text'>Alto Impacto</span></div>", unsafe_allow_html=True)
+st.markdown("<div class='section-title'>Programas de <span class='gradient-text'>Alto Impacto</span></div>", unsafe_allow_html=True)
 
 st.markdown("""
 <div class="grid-2">
@@ -159,7 +159,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # 7. PLANES DE MEMBRESÍA
-st.markdown("<div class='section-title'>Planes de <span class='gradient-text'>Membresía</span></div>", unsafe_allow_html=True)
+st.markdown("<div id='planes' class='section-title'>Planes de <span class='gradient-text'>Membresía</span></div>", unsafe_allow_html=True)
 
 st.markdown("""
 <div class="grid-3">
