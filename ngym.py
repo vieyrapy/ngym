@@ -101,7 +101,7 @@ st.markdown("""
 <div style="display: inline-block; background: rgba(255,115,0,0.1); color: #ffba00; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 800; margin-bottom: 1.5rem; border: 1px solid rgba(255,115,0,0.3); font-size: 0.9rem;">
 🔥 MATRÍCULA 100% GRATIS EN TODOS LOS PLANES
 </div>
-<h1 class="hero-title">El mejor GYM de <span class="gradient-text">Montilla</span></h1>
+<h1 class="hero-title" style="font-size: 5rem;" >El mejor GYM de <span class="gradient-text">Montilla</span></h1>
 <p style="font-size: 1.2rem; color: #cbd5e1; font-weight: 500; max-width: 600px; margin: 0 auto 2.5rem auto;">
 Deja de buscar excusas. Fusionamos entrenamiento de alta intensidad con tecnología para que cada gota de sudor cuente.
 </p>
