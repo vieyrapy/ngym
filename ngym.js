@@ -60,11 +60,11 @@ const App = () => {
     <div className="flex items-center gap-2 group cursor-pointer">
       <div className="relative">
         <div className="w-10 h-10 bg-[#ff9933] rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform">
-          <span className="text-white font-black text-2xl italic">N</span>
+          <span className="text-white font-black text-xl italic uppercase">IA</span>
         </div>
         <Dumbbell className="absolute -bottom-1 -right-1 w-5 h-5 text-gray-900 bg-white rounded-full p-0.5" />
       </div>
-      <span className="font-black text-xl tracking-tighter text-gray-900">Nacho<span className="text-[#ff9933]">GYM</span></span>
+      <span className="font-black text-xl tracking-tighter text-gray-900">IA<span className="text-[#ff9933]">GYM</span></span>
     </div>
   );
 
@@ -412,7 +412,7 @@ const App = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black italic uppercase tracking-tighter">Preguntas <span className="text-[#ff9933]">Frecuentes</span></h2>
-            <p className="text-slate-500 mt-2 font-medium tracking-tight">Todo lo que necesitas saber sobre NachoGYM Montilla.</p>
+            <p className="text-slate-500 mt-2 font-medium tracking-tight">Todo lo que necesitas saber sobre IA GYM Montilla.</p>
           </div>
           
           <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100">
@@ -560,7 +560,7 @@ const App = () => {
         </div>
         
         <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 flex flex-col md:row justify-between items-center gap-4">
-          <p className="text-slate-400 text-sm font-bold">© 2027 NachoGYM Montilla. Todos los derechos reservados.</p>
+          <p className="text-slate-400 text-sm font-bold">© 2027 IA GYM Montilla. Todos los derechos reservados.</p>
         </div>
       </footer>
     </div>
