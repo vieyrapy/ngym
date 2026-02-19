@@ -8,175 +8,180 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# 2. ESTILOS CSS PREMIUM DARK MODE (High-Converting Ads Design)
-# CERO sangría para evitar que Streamlit lo convierta en un bloque de código negro
+# 2. ESTILOS CSS PREMIUM (High-Converting Ads Design)
 st.markdown("""
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;0,900;1,900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<style>
-/* Ocultar UI nativa de Streamlit */
-#MainMenu {visibility: hidden;}
-header {visibility: hidden;}
-footer {visibility: hidden;}
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;0,900;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Ocultar UI nativa de Streamlit */
+        #MainMenu {visibility: hidden;}
+        header {visibility: hidden;}
+        footer {visibility: hidden;}
+        
+        /* Tipografía Global */
+        html, body, [class*="css"] {
+            font-family: 'Montserrat', sans-serif !important;
+            scroll-behavior: smooth;
+        }
+        
+        /* Utilidades de Texto */
+        .gradient-text {
+            background: linear-gradient(135deg, #ff7300 0%, #ffba00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: italic;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.05;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #0f172a;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 4rem 0 2rem 0;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-style: italic;
+            letter-spacing: -0.03em;
+            color: #0f172a;
+        }
+        
+        /* Botones de Alta Conversión */
+        .btn-premium {
+            display: block;
+            background: linear-gradient(135deg, #ff7300 0%, #ff9500 100%);
+            color: white !important;
+            font-weight: 800;
+            text-align: center;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-style: italic;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 25px rgba(255, 115, 0, 0.3);
+            border: none;
+        }
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 115, 0, 0.4);
+            filter: brightness(1.1);
+        }
+        .btn-outline {
+            display: block;
+            background: transparent;
+            color: #0f172a !important;
+            border: 2px solid #cbd5e1;
+            font-weight: 800;
 
-/* Tipografía Global y Forzar Dark Theme */
-html, body, [class*="css"], .stApp {
-font-family: 'Montserrat', sans-serif !important;
-background-color: #0b0f19 !important; /* Fondo principal súper oscuro */
-color: #f8fafc !important; /* Texto principal blanco/hielo */
-scroll-behavior: smooth;
-}
+            text-align: center;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        .btn-outline:hover {
+            border-color: #0f172a;
+            background: #f8fafc;
+        }
 
-/* Utilidades de Texto */
-.gradient-text {
-background: linear-gradient(135deg, #ff7300 0%, #ffba00 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-font-style: italic;
-}
-.hero-title {
-font-size: 3.5rem;
-line-height: 1.05;
-font-weight: 900;
-text-transform: uppercase;
-letter-spacing: -0.05em;
-text-align: center;
-margin-bottom: 1.5rem;
-color: #ffffff !important; /* BLANCO PURO */
-}
-.section-title {
-font-size: 2.5rem;
-text-align: center;
-margin: 4rem 0 2rem 0;
-font-weight: 900;
-text-transform: uppercase;
-font-style: italic;
-letter-spacing: -0.03em;
-color: #ffffff !important; /* BLANCO PURO */
-}
 
-/* Botones de Alta Conversión */
-.btn-premium {
-display: block;
-background: linear-gradient(135deg, #ff7300 0%, #ff9500 100%);
-color: white !important;
-font-weight: 800;
-text-align: center;
-text-decoration: none;
-padding: 1rem 2rem;
-border-radius: 12px;
-width: 100%;
-transition: all 0.3s ease;
-text-transform: uppercase;
-font-style: italic;
-font-size: 1.1rem;
-box-shadow: 0 10px 25px rgba(255, 115, 0, 0.3);
-border: none;
-}
-.btn-premium:hover {
-transform: translateY(-3px);
-box-shadow: 0 15px 35px rgba(255, 115, 0, 0.5);
-filter: brightness(1.1);
-}
-.btn-outline {
-display: block;
-background: rgba(255,255,255,0.05);
-color: #ffffff !important;
-border: 2px solid #334155;
-font-weight: 800;
-text-align: center;
-text-decoration: none;
-padding: 1rem 2rem;
-border-radius: 12px;
-width: 100%;
-transition: all 0.3s ease;
-text-transform: uppercase;
-font-style: italic;
-font-size: 1.1rem;
-}
-.btn-outline:hover {
-border-color: #ff7300;
-background: rgba(255, 115, 0, 0.1);
-}
 
-/* Sistema de Grillas Responsivo */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
-@media (max-width: 768px) {
-.grid-2, .grid-3 { grid-template-columns: 1fr; }
-.hero-title { font-size: 2.5rem; }
-}
+        /* Sistema de Grillas Responsivo */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .hero-title { font-size: 2.5rem; }
+        }
 
-/* Tarjetas de Diseño Dark Premium */
-.card {
-background: #111827; /* Gris muy oscuro */
-border-radius: 20px;
-padding: 2.5rem 2rem;
-box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-border: 1px solid #1f2937;
-transition: all 0.3s ease;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-}
-.card:hover {
-transform: translateY(-8px);
-box-shadow: 0 20px 50px rgba(255,115,0,0.15);
-border-color: #ff7300;
-}
-.card-highlight {
-border: 3px solid #ff7300;
-transform: scale(1.05);
-position: relative;
-background: #1f2937;
-}
-.card-highlight:hover {
-transform: scale(1.05) translateY(-8px);
-}
-
-/* Elementos UI */
-.badge {
-display: inline-block;
-background: rgba(255, 115, 0, 0.15);
-color: #ffba00;
-padding: 0.4rem 1rem;
-border-radius: 50px;
-font-weight: 800;
-font-size: 0.8rem;
-text-transform: uppercase;
-letter-spacing: 1px;
-margin-bottom: 1rem;
-border: 1px solid rgba(255, 115, 0, 0.3);
-}
-.price-tag {
-font-size: 3rem;
-font-weight: 900;
-color: #ffffff;
-line-height: 1;
-margin: 1rem 0;
-}
-.price-tag span { font-size: 1rem; color: #94a3b8; font-weight: 600; }
-
-.list-check li {
-margin-bottom: 0.8rem;
-font-size: 0.95rem;
-font-weight: 600;
-display: flex;
-align-items: center;
-color: #e2e8f0;
-}
-.list-check i { color: #ff7300; margin-right: 10px; font-size: 1.2rem; }
-
-/* Formulario Streamlit Dark Mode Fix */
-div[data-testid="stForm"] {
-border: 1px solid #1f2937 !important;
-padding: 2rem !important;
-background: #111827 !important;
-border-radius: 20px;
-box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-}
-.stTextInput label p { color: #f8fafc !important; font-weight: 600 !important; }
-</style>
+        /* Tarjetas de Diseño */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            border-color: #ff7300;
+        }
+        .card-dark {
+            background: #0f172a;
+            color: white;
+            border: 1px solid #1e293b;
+        }
+        .card-dark:hover {
+            border-color: #ff7300;
+        }
+        .card-highlight {
+            border: 3px solid #ff7300;
+            transform: scale(1.05);
+            position: relative;
+        }
+        .card-highlight:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+        
+        /* Elementos UI */
+        .badge {
+            display: inline-block;
+            background: rgba(255, 115, 0, 0.1);
+            color: #ff7300;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        .price-tag {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #0f172a;
+            line-height: 1;
+            margin: 1rem 0;
+        }
+        .price-tag-dark { color: white; }
+        .price-tag span { font-size: 1rem; color: #64748b; font-weight: 600; }
+        
+        .list-check li {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .list-check i { color: #ff7300; margin-right: 10px; font-size: 1.2rem; }
+        
+        /* Fix Streamlit Form */
+        div[data-testid="stForm"] {
+            border: none !important;
+            padding: 2rem !important;
+            background: white !important;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+    </style>
 """, unsafe_allow_html=True)
 
 # 3. TOP BAR
