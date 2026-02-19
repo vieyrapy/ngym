@@ -114,9 +114,6 @@ with col_h1:
 with col_h2:
     st.markdown("<a href='#reserva' class='btn-outline'>PROBAR 1 DÍA GRATIS</a>", unsafe_allow_html=True)
 
-st.markdown("<br>", unsafe_allow_html=True)
-st.image("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1200", use_container_width=True)
-
 st.markdown("""
 <div style="text-align: center; margin-top: 1.5rem; color: #94a3b8; font-weight: 600; font-size: 1rem;">
 ⭐⭐⭐⭐⭐ Únete a más de <span style="color: #ffffff; font-weight: 800;">500+ socios</span> activos.
