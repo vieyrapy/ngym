@@ -13,7 +13,7 @@ import {
   ShieldCheck,
   ChevronDown,
   ChevronUp,
-  Menu,
+  Menu, 
   X,
   Plus,
   Minus,
@@ -137,7 +137,6 @@ const App = () => {
                 </button>
               </div>
 
-              {/* Nuevo CTA para Prueba Gratis */}
               <div className="bg-slate-100 border-l-4 border-[#ff9933] p-4 rounded-r-2xl max-w-md flex items-center gap-4 group cursor-pointer hover:bg-white transition-all shadow-sm" onClick={() => scrollTo('contacto')}>
                 <div className="bg-white p-2 rounded-full shadow-sm text-[#ff9933]">
                   <HelpCircle className="w-6 h-6" />
@@ -189,7 +188,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* Programas Especiales (Retos) */}
+      {/* Programas Especiales */}
       <section id="programas" className="py-24 bg-slate-900 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -198,7 +197,6 @@ const App = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Reduce la Barriga */}
             <div className="bg-slate-800 rounded-3xl p-8 border border-slate-700 relative overflow-hidden group hover:border-[#ff9933] transition-all">
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-6">
@@ -229,7 +227,6 @@ const App = () => {
               <Target className="absolute -bottom-10 -right-10 w-48 h-48 text-slate-700/20 group-hover:text-[#ff9933]/10 transition-colors" />
             </div>
 
-            {/* Adiós Grasa Total */}
             <div className="bg-slate-800 rounded-3xl p-8 border border-slate-700 relative overflow-hidden group hover:border-[#ff9933] transition-all">
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-6">
@@ -272,7 +269,6 @@ const App = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* OneClub */}
             <div className="bg-slate-50 rounded-3xl p-8 border-2 border-slate-100 flex flex-col hover:shadow-2xl transition-all">
               <h4 className="text-xl font-black mb-2 uppercase tracking-tighter italic">Anual OneClub</h4>
               <div className="mb-6 text-slate-900">
@@ -286,10 +282,9 @@ const App = () => {
                 <li className="flex items-center gap-2 text-sm font-semibold"><CheckCircle2 className="w-4 h-4 text-[#ff9933]" /> Evaluación Inbody Incluida</li>
                 <li className="flex items-center gap-2 text-sm font-semibold text-[#ff9933] font-bold">Matrícula 100% GRATIS</li>
               </ul>
-              <a href="https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000457283253" className="w-full py-4 border-2 border-slate-200 rounded-xl font-black text-center hover:bg-slate-900 hover:text-white transition-all uppercase italic">Adquirir plan</a>
+              <a href="https://www.energyclub.cl/checkout" className="w-full py-4 border-2 border-slate-200 rounded-xl font-black text-center hover:bg-slate-900 hover:text-white transition-all uppercase italic">Adquirir plan</a>
             </div>
 
-            {/* MultiClub - Recomendado */}
             <div className="bg-white rounded-3xl p-8 border-4 border-[#ff9933] flex flex-col relative scale-105 shadow-2xl shadow-orange-100">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ff9933] text-white px-6 py-1.5 rounded-full font-black text-xs uppercase tracking-widest italic">El más recomendado</div>
               <h4 className="text-xl font-black mb-2 uppercase tracking-tighter italic">Anual MultiClub</h4>
@@ -305,10 +300,9 @@ const App = () => {
                 <li className="flex items-center gap-2 text-sm font-bold"><CheckCircle2 className="w-5 h-5 text-[#ff9933]" /> Evaluación física + InBody</li>
                 <li className="flex items-center gap-2 text-sm font-bold text-[#ff9933]">Matrícula GRATIS</li>
               </ul>
-              <a href="https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000457283171" className="w-full py-4 bg-[#ff9933] text-white rounded-xl font-black text-center hover:bg-orange-600 transition-all uppercase shadow-lg shadow-orange-200 italic">¡Lo necesito!</a>
+              <a href="https://www.energyclub.cl/checkout" className="w-full py-4 bg-[#ff9933] text-white rounded-xl font-black text-center hover:bg-orange-600 transition-all uppercase shadow-lg shadow-orange-200 italic">¡Lo necesito!</a>
             </div>
 
-            {/* PAC Mensual */}
             <div className="bg-slate-50 rounded-3xl p-8 border-2 border-slate-100 flex flex-col hover:shadow-2xl transition-all">
               <h4 className="text-xl font-black mb-2 uppercase tracking-tighter italic">Mensual PAC</h4>
               <div className="mb-6 text-slate-900">
@@ -322,13 +316,13 @@ const App = () => {
                 <li className="flex items-center gap-2 text-sm font-semibold"><CheckCircle2 className="w-4 h-4 text-[#ff9933]" /> Congelamiento 30 días / año</li>
                 <li className="flex items-center gap-2 text-sm font-semibold text-[#ff9933] font-bold">Matrícula GRATIS</li>
               </ul>
-              <a href="https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000748390030" className="w-full py-4 border-2 border-slate-200 rounded-xl font-black text-center hover:bg-slate-900 hover:text-white transition-all uppercase italic">Apuntarme ahora</a>
+              <a href="https://www.energyclub.cl/checkout" className="w-full py-4 border-2 border-slate-200 rounded-xl font-black text-center hover:bg-slate-900 hover:text-white transition-all uppercase italic">Apuntarme ahora</a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Clases Exclusivas para Socios */}
+      {/* Clases Exclusivas */}
       <section id="clases" className="py-24 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
@@ -338,7 +332,7 @@ const App = () => {
               </div>
               <h2 className="text-4xl md:text-5xl font-black mb-4 uppercase italic tracking-tighter">Clases <span className="text-[#ff9933]">Grupales Exclusivas</span></h2>
               <p className="text-slate-400 text-lg leading-relaxed">
-                Potencia tus resultados con nuestras sesiones dirigidas. <span className="text-white font-bold italic underline">Importante:</span> Para reservar tu cupo es obligatorio proporcionar tu nombre, correo y teléfono en el enlace de agendamiento.
+                Potencia tus resultados con nuestras sesiones dirigidas. <span className="text-white font-bold italic underline">Importante:</span> Para reservar tu cupo es obligatorio proporcionar tus datos en el agendamiento.
               </p>
             </div>
             <div className="flex flex-col gap-3">
@@ -360,7 +354,6 @@ const App = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Cycling */}
             <div className="group relative h-[450px] rounded-[3rem] overflow-hidden bg-slate-800 border border-slate-700 shadow-2xl">
               <img 
                 src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&q=80&w=800" 
@@ -377,7 +370,7 @@ const App = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a 
-                    href="https://api.leadconnectorhq.com/widget/bookings/clases-cycling"
+                    href="#"
                     className="bg-[#ff9933] text-white px-8 py-4 rounded-2xl font-black text-sm uppercase italic hover:bg-orange-600 transition-all text-center flex items-center justify-center gap-2"
                   >
                     Apuntarme a la clase <ArrowRight className="w-4 h-4"/>
@@ -386,7 +379,6 @@ const App = () => {
               </div>
             </div>
 
-            {/* TRX */}
             <div className="group relative h-[450px] rounded-[3rem] overflow-hidden bg-slate-800 border border-slate-700 shadow-2xl">
               <img 
                 src="https://images.unsplash.com/photo-1544033527-b192daee1f5b?auto=format&fit=crop&q=80&w=800" 
@@ -403,7 +395,7 @@ const App = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a 
-                    href="https://api.leadconnectorhq.com/widget/bookings/clases-trx"
+                    href="#"
                     className="bg-white text-slate-900 px-8 py-4 rounded-2xl font-black text-sm uppercase italic hover:bg-slate-100 transition-all text-center flex items-center justify-center gap-2"
                   >
                     Agendar mi lugar <ArrowRight className="w-4 h-4"/>
@@ -412,57 +404,99 @@ const App = () => {
               </div>
             </div>
           </div>
-          
-          <div className="mt-12 text-center">
-            <p className="text-slate-500 font-bold uppercase tracking-widest text-xs italic">
-              * Se recomienda reservar con al menos 24 horas de anticipación.
-            </p>
-          </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ Sección Completa */}
       <section id="faq" className="py-24 bg-slate-50 px-4">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black italic uppercase tracking-tighter">Preguntas <span className="text-[#ff9933]">Frecuentes</span></h2>
-            <p className="text-slate-500 mt-2 font-medium tracking-tight">Todo lo que necesitas saber antes de empezar en NachoGYM.</p>
+            <p className="text-slate-500 mt-2 font-medium tracking-tight">Todo lo que necesitas saber sobre NachoGYM Montilla.</p>
           </div>
           
           <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100">
             <FAQItem 
               question="¿Cuáles son las formas de pago?" 
-              answer="Aceptamos tarjetas de crédito/débito directamente en la recepción de Montilla (Presencial) y pagos online a través de nuestros enlaces oficiales. Para planes trimestrales, el abono debe ser total al inicio para congelar el precio promocional." 
+              answer="Presencial: Aceptamos tarjetas de crédito/débito directamente en la recepción del gimnasio en Montilla.\nOnline: Aceptamos pagos a través de nuestros enlaces oficiales y plataforma web.\nNota: Para las ofertas trimestrales, se debe abonar el total al iniciar para congelar el precio promocional." 
+            />
+            <FAQItem 
+              question="¿Hay que pagar matrícula de inscripción?" 
+              answer="¡Oferta Actual!: Estamos de oferta y actualmente TODA la matrícula es 100% GRATIS." 
             />
             <FAQItem 
               question="¿Tienen permanencia o contrato obligatorio?" 
-              answer="Los Planes Mensuales no tienen permanencia; solo debes avisar antes del día 25 del mes para la baja. Los Planes Trimestrales no son reembolsables debido al descuento especial por compromiso de tiempo." 
+              answer="Planes Mensuales: No tienen permanencia. Puedes darte de baja avisando antes del día 25 del mes.\nPlanes Trimestrales: No son reembolsables, ya que el descuento especial se otorga por el compromiso de tiempo adquirido." 
             />
             <FAQItem 
-              question="¿Puedo ir a probar antes de pagar?" 
-              answer="¡Claro! Ofrecemos un 'Pase de Día' o una primera clase de valoración gratuita exclusiva para residentes de Montilla. Es obligatorio agendar cita previa para que un monitor pueda atenderte." 
+              question="¿Tienen duchas y taquillas?" 
+              answer="Duchas: Sí, contamos con vestuarios completos y duchas con agua caliente.\nTaquillas (Lockers): Sí. Es obligatorio traer tu propio candado por seguridad para utilizarlas." 
             />
             <FAQItem 
-              question="¿Qué pasa si tengo una lesión o dolor de espalda?" 
-              answer="Dependerá del tipo de lesión y autorización médica. En nuestros retos específicos (Reduce Barriga/Adiós Grasa) evitamos ejercicios de alto impacto lumbar, pero siempre bajo tu responsabilidad y recomendamos certificado médico." 
+              question="¿Puedo ir solo a probar antes de pagar?" 
+              answer="Sí, ofrecemos un 'Pase de Día' o una primera clase de valoración gratuita (exclusivo para residentes de Montilla). Es necesario agendar cita previa para que un monitor pueda atenderte." 
             />
             <FAQItem 
-              question="¿Es obligatorio traer toalla y candado?" 
-              answer="Sí. Por higiene es obligatorio traer tu propia toalla para el entrenamiento. También disponemos de taquillas (lockers), pero debes traer tu propio candado por seguridad." 
+              question="¿Cuáles son los horarios del gimnasio?" 
+              answer="Lunes a Viernes: 06:30 AM a 10:00 PM.\nSábados y Domingos: Cerrado." 
             />
             <FAQItem 
-              question="¿Cómo puedo cancelar o suspender mi membresía?" 
-              answer="Puedes cancelar desde nuestra App o en recepción avisando 5 días antes del cierre de ciclo. En planes mensuales, puedes suspender hasta 1 mes (una vez cada 6 meses) avisando previamente." 
+              question="¿Ofrecen clases dirigidas?" 
+              answer="Sí, contamos con Cycling y TRX. También contamos con programas exclusivos por tiempo limitado bajo consulta de disponibilidad." 
             />
             <FAQItem 
-              question="¿A qué edad pueden entrar los niños?" 
-              answer="Por motivos de seguridad, el acceso a las instalaciones libres está permitido únicamente para mayores de 16 años." 
+              question="¿Puedo cambiar de plan después de iniciar?" 
+              answer="Mensual: Sí, puedes cambiar de plan avisando con al menos 5 días de anticipación.\nTrimestral: No, los planes trimestrales se mantienen con el mismo beneficio durante los 3 meses, sin cambios." 
+            />
+            <FAQItem 
+              question="¿Los niños pueden acceder al gimnasio?" 
+              answer="Por seguridad, solo mayores de 16 años pueden usar las instalaciones libres." 
+            />
+            <FAQItem 
+              question="¿Ofrecen entrenamiento personal?" 
+              answer="Sí, nuestros entrenadores ofrecen sesiones individuales o en parejas. El costo es adicional a la membresía y se agenda directamente con el personal." 
+            />
+            <FAQItem 
+              question="¿Hay descuentos por familia o grupos?" 
+              answer="Actualmente no contamos con descuentos por grupo estandarizados, pero puedes consultar en recepción para presentar tu caso específico." 
+            />
+            <FAQItem 
+              question="¿Puedo suspender mi membresía temporalmente?" 
+              answer="Sí, en planes mensuales puedes suspender hasta 1 mes máximo. Requiere aviso previo en recepción o plataforma y se aplica solo una vez cada 6 meses." 
+            />
+            <FAQItem 
+              question="¿Tienen estacionamiento?" 
+              answer="Sí, contamos con estacionamiento gratuito para socios por orden de llegada." 
+            />
+            <FAQItem 
+              question="¿Ofrecen servicios de nutrición?" 
+              answer="Sí, contamos con asesorías nutricionales personalizadas y planes alimenticios para complementar tu entrenamiento." 
+            />
+            <FAQItem 
+              question="¿Puedo usar el gimnasio si me estoy recuperando de una lesión?" 
+              answer="Dependerá del tipo de lesión y autorización médica. Recomendamos traer certificado médico. El entrenamiento adaptado estará bajo tu propia responsabilidad." 
+            />
+            <FAQItem 
+              question="¿El gimnasio proporciona toallas o equipo personal?" 
+              answer="Toallas: No proporcionamos toallas (traer la propia es obligatorio por higiene).\nEquipo: Todo el equipo de entrenamiento (pesas, bandas, colchonetas, etc.) está disponible para los socios." 
+            />
+            <FAQItem 
+              question="¿Hay WiFi en el gimnasio?" 
+              answer="Sí, contamos con red WiFi gratuita para nuestros socios." 
+            />
+            <FAQItem 
+              question="¿Ofrecen bonos o promociones por referidos?" 
+              answer="Sí, si traes un amigo que se inscriba, ¡ambos reciben un Regalo Sorpresa exclusivo!" 
+            />
+            <FAQItem 
+              question="¿Cómo puedo cancelar mi membresía?" 
+              answer="Opción A: Desde nuestra App cuando quieras.\nOpción B: En Recepción avisando al menos 5 días antes del cierre del ciclo de pago.\nNota: Membresías trimestrales no son reembolsables." 
             />
           </div>
         </div>
       </section>
 
-      {/* CTA Final (Lead Magnet) */}
+      {/* CTA Final */}
       <section id="contacto" className="py-24 px-4 bg-white">
         <div className="max-w-5xl mx-auto bg-slate-900 rounded-[3rem] p-12 text-white relative overflow-hidden shadow-2xl">
           <div className="absolute top-0 right-0 w-1/3 h-full bg-[#ff9933] transform skew-x-12 translate-x-1/2 opacity-20"></div>
@@ -470,34 +504,20 @@ const App = () => {
           <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-5xl font-black mb-6 leading-tight italic uppercase tracking-tighter">Entrena Gratis <span className="text-[#ff9933]">Hoy</span></h2>
-              <p className="text-slate-300 text-xl mb-8 leading-relaxed font-medium">Exclusivo para residentes de Montilla. Clase de valoración o Pase de Día gratuito.</p>
+              <p className="text-slate-300 text-xl mb-8 leading-relaxed font-medium">Exclusivo para residentes de Montilla. Clase de valoración gratuita.</p>
               <div className="space-y-4 text-slate-400 font-bold uppercase tracking-wide text-sm">
                 <div className="flex items-center gap-4"><CheckCircle2 className="text-[#ff9933] w-5 h-5" /> Sin compromisos</div>
                 <div className="flex items-center gap-4"><CheckCircle2 className="text-[#ff9933] w-5 h-5" /> Con monitor asignado</div>
-                <div className="flex items-center gap-4"><CheckCircle2 className="text-[#ff9933] w-5 h-5" /> Valoración física inicial</div>
+                <div className="flex items-center gap-4"><CheckCircle2 className="text-[#ff9933] w-5 h-5" /> Estacionamiento Gratis</div>
               </div>
             </div>
             
             <div className="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl">
               <h4 className="text-2xl font-black mb-6 text-center italic uppercase">Reserva tu prueba</h4>
               <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                <div>
-                  <label className="text-xs font-black uppercase text-slate-400 mb-1 block tracking-widest">Nombre Completo</label>
-                  <input type="text" className="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl focus:border-[#ff9933] outline-none transition-all font-semibold" placeholder="Tu nombre..." />
-                </div>
-                <div>
-                  <label className="text-xs font-black uppercase text-slate-400 mb-1 block tracking-widest">Correo Electrónico</label>
-                  <input type="email" className="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl focus:border-[#ff9933] outline-none transition-all font-semibold" placeholder="tu@email.com" />
-                </div>
-                <div>
-                  <label className="text-xs font-black uppercase text-slate-400 mb-1 block tracking-widest">Teléfono</label>
-                  <input type="tel" className="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl focus:border-[#ff9933] outline-none transition-all font-semibold" placeholder="+34 000 000 000" />
-                </div>
-                <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl mb-4">
-                  <input type="checkbox" className="w-5 h-5 accent-[#ff9933] cursor-pointer" id="residente" />
-                  <label htmlFor="residente" className="text-sm font-bold text-slate-600 cursor-pointer">Soy residente de Montilla</label>
-                </div>
-                <button className="w-full bg-[#ff9933] text-white py-5 rounded-2xl font-black text-xl hover:bg-orange-600 transition-all shadow-xl shadow-orange-100 uppercase italic">
+                <input type="text" className="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl focus:border-[#ff9933] outline-none font-semibold" placeholder="Nombre completo" />
+                <input type="email" className="w-full bg-slate-50 border-2 border-slate-100 p-4 rounded-xl focus:border-[#ff9933] outline-none font-semibold" placeholder="Email" />
+                <button className="w-full bg-[#ff9933] text-white py-5 rounded-2xl font-black text-xl hover:bg-orange-600 transition-all uppercase italic">
                   Agendar mi prueba
                 </button>
               </form>
@@ -523,7 +543,7 @@ const App = () => {
               <li className="flex items-center gap-3"><Phone className="text-[#ff9933] w-5 h-5" /> +34 612 345 678</li>
               <li className="flex items-start gap-3">
                 <Clock className="text-[#ff9933] w-5 h-5 mt-1" /> 
-                <span>Lunes a Viernes<br/>07:00 - 22:00 hs</span>
+                <span>Lun - Vie<br/>06:30 - 22:00 hs</span>
               </li>
             </ul>
           </div>
@@ -531,8 +551,8 @@ const App = () => {
           <div>
             <h5 className="font-black mb-6 uppercase tracking-widest text-sm italic">Accesos</h5>
             <ul className="space-y-4 text-slate-500 font-black text-xs uppercase tracking-wider">
-              <li><button onClick={() => scrollTo('programas')} className="hover:text-[#ff9933]">Retos 6 Semanas</button></li>
-              <li><button onClick={() => scrollTo('planes')} className="hover:text-[#ff9933]">Membresías</button></li>
+              <li><button onClick={() => scrollTo('programas')} className="hover:text-[#ff9933]">Programas</button></li>
+              <li><button onClick={() => scrollTo('planes')} className="hover:text-[#ff9933]">Planes</button></li>
               <li><button onClick={() => scrollTo('clases')} className="hover:text-[#ff9933]">Clases Grupales</button></li>
               <li><button onClick={() => scrollTo('faq')} className="hover:text-[#ff9933]">Ayuda / FAQ</button></li>
             </ul>
@@ -540,7 +560,7 @@ const App = () => {
         </div>
         
         <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 flex flex-col md:row justify-between items-center gap-4">
-          <p className="text-slate-400 text-sm font-bold">© 2024 NachoGYM Montilla. Todos los derechos reservados.</p>
+          <p className="text-slate-400 text-sm font-bold">© 2027 NachoGYM Montilla. Todos los derechos reservados.</p>
         </div>
       </footer>
     </div>
