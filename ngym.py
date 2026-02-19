@@ -215,7 +215,7 @@ st.markdown("""
 # 8. CLASES EXCLUSIVAS
 st.markdown("<div class='section-title'>Clases Grupales <span class='gradient-text'>Incluidas</span></div>", unsafe_allow_html=True)
 st.markdown("""
-<div style="text-align: center; margin-top: 1.5rem; color: #94a3b8; font-weight: 600; font-size: 1rem;">
+<div style="text-align: center; margin-bottom: 1rem; color: #94a3b8; font-weight: 600; font-size: 1rem;">
 Únete a las clases grupales exclusivos para socios activos.
 </div>
 """, unsafe_allow_html=True)
