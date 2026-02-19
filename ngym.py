@@ -8,180 +8,38 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# 2. ESTILOS CSS PREMIUM (High-Converting Ads Design)
+# 2. ESTILOS CSS PREMIUM DARK MODE
+# IMPORTANTE: Sin líneas en blanco intermedias para evitar el bug del Markdown de Streamlit
 st.markdown("""
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;0,900;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Ocultar UI nativa de Streamlit */
-        #MainMenu {visibility: hidden;}
-        header {visibility: hidden;}
-        footer {visibility: hidden;}
-        
-        /* Tipografía Global */
-        html, body, [class*="css"] {
-            font-family: 'Montserrat', sans-serif !important;
-            scroll-behavior: smooth;
-        }
-        
-        /* Utilidades de Texto */
-        .gradient-text {
-            background: linear-gradient(135deg, #ff7300 0%, #ffba00 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-style: italic;
-        }
-        .hero-title {
-            font-size: 3.5rem;
-            line-height: 1.05;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -0.05em;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: #0f172a;
-        }
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin: 4rem 0 2rem 0;
-            font-weight: 900;
-            text-transform: uppercase;
-            font-style: italic;
-            letter-spacing: -0.03em;
-            color: #0f172a;
-        }
-        
-        /* Botones de Alta Conversión */
-        .btn-premium {
-            display: block;
-            background: linear-gradient(135deg, #ff7300 0%, #ff9500 100%);
-            color: white !important;
-            font-weight: 800;
-            text-align: center;
-            text-decoration: none;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            width: 100%;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-style: italic;
-            font-size: 1.1rem;
-            box-shadow: 0 10px 25px rgba(255, 115, 0, 0.3);
-            border: none;
-        }
-        .btn-premium:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(255, 115, 0, 0.4);
-            filter: brightness(1.1);
-        }
-        .btn-outline {
-            display: block;
-            background: transparent;
-            color: #0f172a !important;
-            border: 2px solid #cbd5e1;
-            font-weight: 800;
-
-            text-align: center;
-            text-decoration: none;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            width: 100%;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-style: italic;
-            font-size: 1.1rem;
-        }
-        .btn-outline:hover {
-            border-color: #0f172a;
-            background: #f8fafc;
-        }
-
-
-
-        /* Sistema de Grillas Responsivo */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
-        @media (max-width: 768px) {
-            .grid-2, .grid-3 { grid-template-columns: 1fr; }
-            .hero-title { font-size: 2.5rem; }
-        }
-
-        /* Tarjetas de Diseño */
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-            border: 1px solid #f1f5f9;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
-            border-color: #ff7300;
-        }
-        .card-dark {
-            background: #0f172a;
-            color: white;
-            border: 1px solid #1e293b;
-        }
-        .card-dark:hover {
-            border-color: #ff7300;
-        }
-        .card-highlight {
-            border: 3px solid #ff7300;
-            transform: scale(1.05);
-            position: relative;
-        }
-        .card-highlight:hover {
-            transform: scale(1.05) translateY(-8px);
-        }
-        
-        /* Elementos UI */
-        .badge {
-            display: inline-block;
-            background: rgba(255, 115, 0, 0.1);
-            color: #ff7300;
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-        .price-tag {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #0f172a;
-            line-height: 1;
-            margin: 1rem 0;
-        }
-        .price-tag-dark { color: white; }
-        .price-tag span { font-size: 1rem; color: #64748b; font-weight: 600; }
-        
-        .list-check li {
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-        }
-        .list-check i { color: #ff7300; margin-right: 10px; font-size: 1.2rem; }
-        
-        /* Fix Streamlit Form */
-        div[data-testid="stForm"] {
-            border: none !important;
-            padding: 2rem !important;
-            background: white !important;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-        }
-    </style>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;0,900;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
+html, body, .stApp { font-family: 'Montserrat', sans-serif !important; background-color: #0b0f19 !important; color: #f8fafc !important; scroll-behavior: smooth; }
+.gradient-text { background: linear-gradient(135deg, #ff7300 0%, #ffba00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; }
+.hero-title { font-size: 3.5rem; line-height: 1.05; font-weight: 900; text-transform: uppercase; letter-spacing: -0.05em; text-align: center; margin-bottom: 1.5rem; color: #ffffff !important; }
+.section-title { font-size: 2.5rem; text-align: center; margin: 4rem 0 2rem 0; font-weight: 900; text-transform: uppercase; font-style: italic; letter-spacing: -0.03em; color: #ffffff !important; }
+.btn-premium { display: block; background: linear-gradient(135deg, #ff7300 0%, #ff9500 100%); color: white !important; font-weight: 800; text-align: center; text-decoration: none; padding: 1rem 2rem; border-radius: 12px; width: 100%; transition: all 0.3s ease; text-transform: uppercase; font-style: italic; font-size: 1.1rem; box-shadow: 0 10px 25px rgba(255, 115, 0, 0.3); border: none; }
+.btn-premium:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(255, 115, 0, 0.5); filter: brightness(1.1); }
+.btn-outline { display: block; background: rgba(255,255,255,0.05); color: #ffffff !important; border: 2px solid #334155; font-weight: 800; text-align: center; text-decoration: none; padding: 1rem 2rem; border-radius: 12px; width: 100%; transition: all 0.3s ease; text-transform: uppercase; font-style: italic; font-size: 1.1rem; }
+.btn-outline:hover { border-color: #ff7300; background: rgba(255, 115, 0, 0.1); }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+@media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } .hero-title { font-size: 2.5rem; } }
+.card { background: #111827; border-radius: 20px; padding: 2.5rem 2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.5); border: 1px solid #1f2937; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; }
+.card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(255,115,0,0.15); border-color: #ff7300; }
+.card-highlight { border: 3px solid #ff7300; transform: scale(1.05); position: relative; background: #1f2937; }
+.card-highlight:hover { transform: scale(1.05) translateY(-8px); }
+.badge { display: inline-block; background: rgba(255, 115, 0, 0.15); color: #ffba00; padding: 0.4rem 1rem; border-radius: 50px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; border: 1px solid rgba(255, 115, 0, 0.3); }
+.price-tag { font-size: 3rem; font-weight: 900; color: #ffffff; line-height: 1; margin: 1rem 0; }
+.price-tag span { font-size: 1rem; color: #94a3b8; font-weight: 600; }
+.list-check li { margin-bottom: 0.8rem; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; color: #e2e8f0; }
+.list-check i { color: #ff7300; margin-right: 10px; font-size: 1.2rem; }
+div[data-testid="stForm"] { border: 1px solid #1f2937 !important; padding: 2rem !important; background: #111827 !important; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+.stTextInput label p { color: #f8fafc !important; font-weight: 600 !important; }
+</style>
 """, unsafe_allow_html=True)
 
 # 3. TOP BAR
@@ -197,7 +55,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 st.divider()
 
-# 4. HERO SECTION (Alta Conversión)
+# 4. HERO SECTION
 st.markdown("""
 <div style="text-align: center; padding: 2rem 0;">
 <div style="display: inline-block; background: rgba(255,115,0,0.1); color: #ffba00; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 800; margin-bottom: 1.5rem; border: 1px solid rgba(255,115,0,0.3); font-size: 0.9rem;">
@@ -245,7 +103,6 @@ st.markdown("""
 </div>
 <a href="#reserva" class="btn-premium" style="margin-top: 2rem;">QUIERO ACCEDER ➔</a>
 </div>
-
 <div class="card">
 <div>
 <span class="badge">⏱️ 3 MESES TOTAL</span>
@@ -283,7 +140,6 @@ st.markdown("""
 </div>
 <a href="https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000457283253" target="_blank" class="btn-outline" style="margin-top: 1.5rem;">Adquirir plan</a>
 </div>
-
 <div class="card card-highlight">
 <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #ff7300; color: white; padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 0.8rem; letter-spacing: 1px;">EL MÁS COMPLETO</div>
 <div>
@@ -299,7 +155,6 @@ st.markdown("""
 </div>
 <a href="https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000457283171" target="_blank" class="btn-premium" style="margin-top: 1.5rem;">¡LO NECESITO!</a>
 </div>
-
 <div class="card">
 <div>
 <h4 style="font-weight: 900; font-size: 1.2rem; color: #ffffff; margin-bottom: 0;">MENSUAL PAC</h4>
@@ -331,7 +186,6 @@ st.markdown("""
 <a href="https://api.leadconnectorhq.com/widget/bookings/clases-cycling" target="_blank" class="btn-outline">Reservar Bici</a>
 </div>
 </div>
-
 <div class="card" style="padding: 0; overflow: hidden; border: 1px solid #1f2937;">
 <div style="height: 200px; background-image: url('https://images.unsplash.com/photo-1544033527-b192daee1f5b?auto=format&fit=crop&q=80&w=800'); background-size: cover; background-position: center;"></div>
 <div style="padding: 2rem;">
