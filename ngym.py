@@ -1,6 +1,6 @@
 import streamlit as st
 
-# 1. CONFIGURACIÓN DE PÁGINA (Centrada, ideal para embudos de conversión y móviles)
+# 1. CONFIGURACIÓN DE PÁGINA
 st.set_page_config(
     page_title="NA GYM Montilla - Transforma tu cuerpo",
     page_icon="🔥",
@@ -8,203 +8,201 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# 2. ESTILOS CSS PREMIUM (High-Converting Ads Design)
+# 2. ESTILOS CSS PREMIUM DARK MODE (High-Converting Ads Design)
+# CERO sangría para evitar que Streamlit lo convierta en un bloque de código negro
 st.markdown("""
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;0,900;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Ocultar UI nativa de Streamlit */
-        #MainMenu {visibility: hidden;}
-        header {visibility: hidden;}
-        footer {visibility: hidden;}
-        
-        /* Tipografía Global */
-        html, body, [class*="css"] {
-            font-family: 'Montserrat', sans-serif !important;
-            scroll-behavior: smooth;
-        }
-        
-        /* Utilidades de Texto */
-        .gradient-text {
-            background: linear-gradient(135deg, #ff7300 0%, #ffba00 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-style: italic;
-        }
-        .hero-title {
-            font-size: 3.5rem;
-            line-height: 1.05;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -0.05em;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: #0f172a;
-        }
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin: 4rem 0 2rem 0;
-            font-weight: 900;
-            text-transform: uppercase;
-            font-style: italic;
-            letter-spacing: -0.03em;
-            color: #0f172a;
-        }
-        
-        /* Botones de Alta Conversión */
-        .btn-premium {
-            display: block;
-            background: linear-gradient(135deg, #ff7300 0%, #ff9500 100%);
-            color: white !important;
-            font-weight: 800;
-            text-align: center;
-            text-decoration: none;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            width: 100%;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-style: italic;
-            font-size: 1.1rem;
-            box-shadow: 0 10px 25px rgba(255, 115, 0, 0.3);
-            border: none;
-        }
-        .btn-premium:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(255, 115, 0, 0.4);
-            filter: brightness(1.1);
-        }
-        .btn-outline {
-            display: block;
-            background: transparent;
-            color: #0f172a !important;
-            border: 2px solid #cbd5e1;
-            font-weight: 800;
-            text-align: center;
-            text-decoration: none;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            width: 100%;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-style: italic;
-            font-size: 1.1rem;
-        }
-        .btn-outline:hover {
-            border-color: #0f172a;
-            background: #f8fafc;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;0,900;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+/* Ocultar UI nativa de Streamlit */
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
 
-        /* Sistema de Grillas Responsivo */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
-        @media (max-width: 768px) {
-            .grid-2, .grid-3 { grid-template-columns: 1fr; }
-            .hero-title { font-size: 2.5rem; }
-        }
+/* Tipografía Global y Forzar Dark Theme */
+html, body, [class*="css"], .stApp {
+font-family: 'Montserrat', sans-serif !important;
+background-color: #0b0f19 !important; /* Fondo principal súper oscuro */
+color: #f8fafc !important; /* Texto principal blanco/hielo */
+scroll-behavior: smooth;
+}
 
-        /* Tarjetas de Diseño */
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-            border: 1px solid #f1f5f9;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
-            border-color: #ff7300;
-        }
-        .card-dark {
-            background: #0f172a;
-            color: white;
-            border: 1px solid #1e293b;
-        }
-        .card-dark:hover {
-            border-color: #ff7300;
-        }
-        .card-highlight {
-            border: 3px solid #ff7300;
-            transform: scale(1.05);
-            position: relative;
-        }
-        .card-highlight:hover {
-            transform: scale(1.05) translateY(-8px);
-        }
-        
-        /* Elementos UI */
-        .badge {
-            display: inline-block;
-            background: rgba(255, 115, 0, 0.1);
-            color: #ff7300;
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-        .price-tag {
-            font-size: 3rem;
-            font-weight: 900;
-            color: #0f172a;
-            line-height: 1;
-            margin: 1rem 0;
-        }
-        .price-tag-dark { color: white; }
-        .price-tag span { font-size: 1rem; color: #64748b; font-weight: 600; }
-        
-        .list-check li {
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-        }
-        .list-check i { color: #ff7300; margin-right: 10px; font-size: 1.2rem; }
-        
-        /* Fix Streamlit Form */
-        div[data-testid="stForm"] {
-            border: none !important;
-            padding: 2rem !important;
-            background: white !important;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-        }
-    </style>
+/* Utilidades de Texto */
+.gradient-text {
+background: linear-gradient(135deg, #ff7300 0%, #ffba00 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+font-style: italic;
+}
+.hero-title {
+font-size: 3.5rem;
+line-height: 1.05;
+font-weight: 900;
+text-transform: uppercase;
+letter-spacing: -0.05em;
+text-align: center;
+margin-bottom: 1.5rem;
+color: #ffffff !important; /* BLANCO PURO */
+}
+.section-title {
+font-size: 2.5rem;
+text-align: center;
+margin: 4rem 0 2rem 0;
+font-weight: 900;
+text-transform: uppercase;
+font-style: italic;
+letter-spacing: -0.03em;
+color: #ffffff !important; /* BLANCO PURO */
+}
+
+/* Botones de Alta Conversión */
+.btn-premium {
+display: block;
+background: linear-gradient(135deg, #ff7300 0%, #ff9500 100%);
+color: white !important;
+font-weight: 800;
+text-align: center;
+text-decoration: none;
+padding: 1rem 2rem;
+border-radius: 12px;
+width: 100%;
+transition: all 0.3s ease;
+text-transform: uppercase;
+font-style: italic;
+font-size: 1.1rem;
+box-shadow: 0 10px 25px rgba(255, 115, 0, 0.3);
+border: none;
+}
+.btn-premium:hover {
+transform: translateY(-3px);
+box-shadow: 0 15px 35px rgba(255, 115, 0, 0.5);
+filter: brightness(1.1);
+}
+.btn-outline {
+display: block;
+background: rgba(255,255,255,0.05);
+color: #ffffff !important;
+border: 2px solid #334155;
+font-weight: 800;
+text-align: center;
+text-decoration: none;
+padding: 1rem 2rem;
+border-radius: 12px;
+width: 100%;
+transition: all 0.3s ease;
+text-transform: uppercase;
+font-style: italic;
+font-size: 1.1rem;
+}
+.btn-outline:hover {
+border-color: #ff7300;
+background: rgba(255, 115, 0, 0.1);
+}
+
+/* Sistema de Grillas Responsivo */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+@media (max-width: 768px) {
+.grid-2, .grid-3 { grid-template-columns: 1fr; }
+.hero-title { font-size: 2.5rem; }
+}
+
+/* Tarjetas de Diseño Dark Premium */
+.card {
+background: #111827; /* Gris muy oscuro */
+border-radius: 20px;
+padding: 2.5rem 2rem;
+box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+border: 1px solid #1f2937;
+transition: all 0.3s ease;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+.card:hover {
+transform: translateY(-8px);
+box-shadow: 0 20px 50px rgba(255,115,0,0.15);
+border-color: #ff7300;
+}
+.card-highlight {
+border: 3px solid #ff7300;
+transform: scale(1.05);
+position: relative;
+background: #1f2937;
+}
+.card-highlight:hover {
+transform: scale(1.05) translateY(-8px);
+}
+
+/* Elementos UI */
+.badge {
+display: inline-block;
+background: rgba(255, 115, 0, 0.15);
+color: #ffba00;
+padding: 0.4rem 1rem;
+border-radius: 50px;
+font-weight: 800;
+font-size: 0.8rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+margin-bottom: 1rem;
+border: 1px solid rgba(255, 115, 0, 0.3);
+}
+.price-tag {
+font-size: 3rem;
+font-weight: 900;
+color: #ffffff;
+line-height: 1;
+margin: 1rem 0;
+}
+.price-tag span { font-size: 1rem; color: #94a3b8; font-weight: 600; }
+
+.list-check li {
+margin-bottom: 0.8rem;
+font-size: 0.95rem;
+font-weight: 600;
+display: flex;
+align-items: center;
+color: #e2e8f0;
+}
+.list-check i { color: #ff7300; margin-right: 10px; font-size: 1.2rem; }
+
+/* Formulario Streamlit Dark Mode Fix */
+div[data-testid="stForm"] {
+border: 1px solid #1f2937 !important;
+padding: 2rem !important;
+background: #111827 !important;
+border-radius: 20px;
+box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+.stTextInput label p { color: #f8fafc !important; font-weight: 600 !important; }
+</style>
 """, unsafe_allow_html=True)
 
 # 3. TOP BAR
 st.markdown("""
-    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0;">
-        <div style="font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; color: #0f172a;">
-            <span style='background: #ff7300; color: white; padding: 4px 12px; border-radius: 8px; font-style: italic; margin-right: 5px;'>NA</span> GYM
-        </div>
-        <div style="font-weight: 700; font-size: 0.9rem; color: #64748b;">
-            📍 Montilla, Córdoba
-        </div>
-    </div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0;">
+<div style="font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; color: #ffffff;">
+<span style='background: #ff7300; color: white; padding: 4px 12px; border-radius: 8px; font-style: italic; margin-right: 5px;'>NA</span> GYM
+</div>
+<div style="font-weight: 700; font-size: 0.9rem; color: #cbd5e1;">
+📍 Montilla, Córdoba
+</div>
+</div>
 """, unsafe_allow_html=True)
 st.divider()
 
-# 4. HERO SECTION (Optimizado para Conversión)
+# 4. HERO SECTION (Alta Conversión)
 st.markdown("""
-    <div style="text-align: center; padding: 2rem 0;">
-        <div style="display: inline-block; background: #fff7ed; color: #ff7300; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 800; margin-bottom: 1.5rem; border: 1px solid #ffedd5; font-size: 0.9rem;">
-            🔥 MATRÍCULA 100% GRATIS - SOLO ESTA SEMANA
-        </div>
-        <h1 class="hero-title">Transforma tu cuerpo en <span class="gradient-text">Montilla.</span></h1>
-        <p style="font-size: 1.2rem; color: #64748b; font-weight: 500; max-width: 600px; margin: 0 auto 2.5rem auto;">
-            Entrenamiento personalizado, tecnología y los mejores programas de pérdida de grasa en Córdoba.
-        </p>
-    </div>
+<div style="text-align: center; padding: 2rem 0;">
+<div style="display: inline-block; background: rgba(255,115,0,0.1); color: #ffba00; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 800; margin-bottom: 1.5rem; border: 1px solid rgba(255,115,0,0.3); font-size: 0.9rem;">
+🔥 MATRÍCULA 100% GRATIS - SOLO ESTA SEMANA
+</div>
+<h1 class="hero-title">Transforma tu cuerpo en <span class="gradient-text">Montilla.</span></h1>
+<p style="font-size: 1.2rem; color: #cbd5e1; font-weight: 500; max-width: 600px; margin: 0 auto 2.5rem auto;">
+Entrenamiento personalizado, tecnología y los mejores programas de pérdida de grasa en Córdoba.
+</p>
+</div>
 """, unsafe_allow_html=True)
 
 col_h1, col_h2 = st.columns(2)
@@ -217,133 +215,128 @@ st.markdown("<br>", unsafe_allow_html=True)
 st.image("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1200", use_container_width=True)
 
 st.markdown("""
-    <div style="text-align: center; margin-top: 1.5rem; color: #64748b; font-weight: 600; font-size: 1rem;">
-        ⭐⭐⭐⭐⭐ Únete a más de <span style="color: #0f172a; font-weight: 800;">500+ socios</span> activos.
-    </div>
+<div style="text-align: center; margin-top: 1.5rem; color: #94a3b8; font-weight: 600; font-size: 1rem;">
+⭐⭐⭐⭐⭐ Únete a más de <span style="color: #ffffff; font-weight: 800;">500+ socios</span> activos.
+</div>
 """, unsafe_allow_html=True)
 
-# 5. PROGRAMAS EXCLUSIVOS (Dark Mode Cards)
+# 5. PROGRAMAS EXCLUSIVOS
 st.markdown("<div class='section-title'>Retos de <span class='gradient-text'>Alto Impacto</span></div>", unsafe_allow_html=True)
 
 st.markdown("""
-    <div class="grid-2">
-        <!-- Programa 1 -->
-        <div class="card card-dark">
-            <div>
-                <span class="badge" style="background: rgba(255,255,255,0.1); color: #ffba00;">⏱️ 6 SEMANAS</span>
-                <h3 style="font-size: 2rem; font-weight: 900; font-style: italic; margin-bottom: 0;">REDUCE LA BARRIGA</h3>
-                <div class="price-tag price-tag-dark">99€ <span style="text-decoration: line-through; color: #94a3b8;">Antes 150€</span></div>
-                <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 1.5rem;">Elimina la grasa visceral y subcutánea del abdomen. Trabajo focalizado en el core.</p>
-                <ul class="list-check" style="list-style: none; padding: 0; color: white;">
-                    <li><i class="fas fa-check-circle"></i> Lunes a Viernes 15:00 hs</li>
-                    <li><i class="fas fa-check-circle"></i> 3 Sesiones presenciales/semana</li>
-                    <li><i class="fas fa-check-circle"></i> Guía "Anti-Inflamación"</li>
-                    <li><i class="fas fa-check-circle"></i> Medición de perímetros semanal</li>
-                </ul>
-            </div>
-            <a href="#reserva" class="btn-premium" style="margin-top: 2rem;">QUIERO ACCEDER ➔</a>
-        </div>
-        
-        <!-- Programa 2 -->
-        <div class="card card-dark">
-            <div>
-                <span class="badge" style="background: rgba(255,255,255,0.1); color: #ffba00;">⏱️ 3 MESES TOTAL</span>
-                <h3 style="font-size: 2rem; font-weight: 900; font-style: italic; margin-bottom: 0;">ADIÓS GRASA TOTAL</h3>
-                <div class="price-tag price-tag-dark">109€ <span style="text-decoration: line-through; color: #94a3b8;">Antes 199€</span></div>
-                <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 1.5rem;">Pérdida de peso general y acondicionamiento físico. Para un cambio integral definitivo.</p>
-                <ul class="list-check" style="list-style: none; padding: 0; color: white;">
-                    <li><i class="fas fa-check-circle"></i> Lunes a Viernes 10:00 AM</li>
-                    <li><i class="fas fa-check-circle"></i> 5 Sesiones presenciales/semana</li>
-                    <li><i class="fas fa-check-circle"></i> Guía "Quema Grasa Total"</li>
-                    <li><i class="fas fa-check-circle"></i> Seguimiento progresivo mensual</li>
-                </ul>
-            </div>
-            <a href="#reserva" class="btn-premium" style="margin-top: 2rem;">¡LO NECESITO AHORA! ➔</a>
-        </div>
-    </div>
+<div class="grid-2">
+<div class="card">
+<div>
+<span class="badge">⏱️ 6 SEMANAS</span>
+<h3 style="font-size: 2rem; font-weight: 900; font-style: italic; margin-bottom: 0; color: #ffffff;">REDUCE LA BARRIGA</h3>
+<div class="price-tag">99€ <span style="text-decoration: line-through;">Antes 150€</span></div>
+<p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 1.5rem;">Elimina la grasa visceral y subcutánea del abdomen. Trabajo focalizado en el core.</p>
+<ul class="list-check" style="list-style: none; padding: 0;">
+<li><i class="fas fa-check-circle"></i> Lunes a Viernes 15:00 hs</li>
+<li><i class="fas fa-check-circle"></i> 3 Sesiones presenciales/semana</li>
+<li><i class="fas fa-check-circle"></i> Guía "Anti-Inflamación"</li>
+<li><i class="fas fa-check-circle"></i> Medición de perímetros semanal</li>
+</ul>
+</div>
+<a href="#reserva" class="btn-premium" style="margin-top: 2rem;">QUIERO ACCEDER ➔</a>
+</div>
+
+<div class="card">
+<div>
+<span class="badge">⏱️ 3 MESES TOTAL</span>
+<h3 style="font-size: 2rem; font-weight: 900; font-style: italic; margin-bottom: 0; color: #ffffff;">ADIÓS GRASA TOTAL</h3>
+<div class="price-tag">109€ <span style="text-decoration: line-through;">Antes 199€</span></div>
+<p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 1.5rem;">Pérdida de peso general y acondicionamiento físico. Para un cambio integral definitivo.</p>
+<ul class="list-check" style="list-style: none; padding: 0;">
+<li><i class="fas fa-check-circle"></i> Lunes a Viernes 10:00 AM</li>
+<li><i class="fas fa-check-circle"></i> 5 Sesiones presenciales/semana</li>
+<li><i class="fas fa-check-circle"></i> Guía "Quema Grasa Total"</li>
+<li><i class="fas fa-check-circle"></i> Seguimiento progresivo mensual</li>
+</ul>
+</div>
+<a href="#reserva" class="btn-premium" style="margin-top: 2rem;">¡LO NECESITO AHORA! ➔</a>
+</div>
+</div>
 """, unsafe_allow_html=True)
 
 # 6. PLANES DE MEMBRESÍA
 st.markdown("<div class='section-title'>Planes de <span class='gradient-text'>Membresía</span></div>", unsafe_allow_html=True)
 
 st.markdown("""
-    <div class="grid-3">
-        <!-- Plan 1 -->
-        <div class="card">
-            <div>
-                <h4 style="font-weight: 900; font-size: 1.2rem; color: #0f172a; margin-bottom: 0;">ANUAL ONECLUB</h4>
-                <div class="price-tag">16,33€<span>/mes</span></div>
-                <p style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Pago único anual 196€</p>
-                <ul class="list-check" style="list-style: none; padding: 0; margin-top: 1.5rem;">
-                    <li><i class="fas fa-check"></i> 1 Mes de regalo (tú + amigo)</li>
-                    <li><i class="fas fa-check"></i> Entrenamiento Personalizado</li>
-                    <li><i class="fas fa-check"></i> InBody y Programa</li>
-                    <li style="color: #ff7300;"><i class="fas fa-gift"></i> Matrícula 100% GRATIS</li>
-                </ul>
-            </div>
-            <a href="https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000457283253" target="_blank" class="btn-outline" style="margin-top: 1.5rem;">Adquirir plan</a>
-        </div>
-        
-        <!-- Plan 2 (Destacado) -->
-        <div class="card card-highlight">
-            <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #ff7300; color: white; padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 0.8rem; letter-spacing: 1px;">EL MÁS COMPLETO</div>
-            <div>
-                <h4 style="font-weight: 900; font-size: 1.2rem; color: #0f172a; margin-bottom: 0;">ANUAL MULTICLUB</h4>
-                <div class="price-tag">26,33€<span>/mes</span></div>
-                <p style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Pago único anual 296€</p>
-                <ul class="list-check" style="list-style: none; padding: 0; margin-top: 1.5rem;">
-                    <li><i class="fas fa-star"></i> Acceso a TODA la red</li>
-                    <li><i class="fas fa-check"></i> 1 Mes de regalo (tú + amigo)</li>
-                    <li><i class="fas fa-check"></i> Entrenamiento + InBody</li>
-                    <li style="color: #ff7300;"><i class="fas fa-gift"></i> Matrícula 100% GRATIS</li>
-                </ul>
-            </div>
-            <a href="https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000457283171" target="_blank" class="btn-premium" style="margin-top: 1.5rem;">¡LO NECESITO!</a>
-        </div>
-        
-        <!-- Plan 3 -->
-        <div class="card">
-            <div>
-                <h4 style="font-weight: 900; font-size: 1.2rem; color: #0f172a; margin-bottom: 0;">MENSUAL PAC</h4>
-                <div class="price-tag">15,66€<span>/mes</span></div>
-                <p style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Renovación automática</p>
-                <ul class="list-check" style="list-style: none; padding: 0; margin-top: 1.5rem;">
-                    <li><i class="fas fa-check"></i> Sin permanencia</li>
-                    <li><i class="fas fa-check"></i> 1 Sesión Personal Trainer</li>
-                    <li><i class="fas fa-check"></i> Congelamiento 30 días/año</li>
-                    <li style="color: #ff7300;"><i class="fas fa-gift"></i> Matrícula 100% GRATIS</li>
-                </ul>
-            </div>
-            <a href="https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000748390030" target="_blank" class="btn-outline" style="margin-top: 1.5rem;">Apuntarme ahora</a>
-        </div>
-    </div>
+<div class="grid-3">
+<div class="card">
+<div>
+<h4 style="font-weight: 900; font-size: 1.2rem; color: #ffffff; margin-bottom: 0;">ANUAL ONECLUB</h4>
+<div class="price-tag">16,33€<span>/mes</span></div>
+<p style="font-size: 0.8rem; font-weight: 700; color: #94a3b8; text-transform: uppercase;">Pago único anual 196€</p>
+<ul class="list-check" style="list-style: none; padding: 0; margin-top: 1.5rem;">
+<li><i class="fas fa-check"></i> 1 Mes de regalo (tú + amigo)</li>
+<li><i class="fas fa-check"></i> Entrenamiento Personalizado</li>
+<li><i class="fas fa-check"></i> InBody y Programa</li>
+<li style="color: #ff7300;"><i class="fas fa-gift"></i> Matrícula 100% GRATIS</li>
+</ul>
+</div>
+<a href="https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000457283253" target="_blank" class="btn-outline" style="margin-top: 1.5rem;">Adquirir plan</a>
+</div>
+
+<div class="card card-highlight">
+<div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #ff7300; color: white; padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 0.8rem; letter-spacing: 1px;">EL MÁS COMPLETO</div>
+<div>
+<h4 style="font-weight: 900; font-size: 1.2rem; color: #ffffff; margin-bottom: 0;">ANUAL MULTICLUB</h4>
+<div class="price-tag">26,33€<span>/mes</span></div>
+<p style="font-size: 0.8rem; font-weight: 700; color: #94a3b8; text-transform: uppercase;">Pago único anual 296€</p>
+<ul class="list-check" style="list-style: none; padding: 0; margin-top: 1.5rem;">
+<li><i class="fas fa-star"></i> Acceso a TODA la red</li>
+<li><i class="fas fa-check"></i> 1 Mes de regalo (tú + amigo)</li>
+<li><i class="fas fa-check"></i> Entrenamiento + InBody</li>
+<li style="color: #ff7300;"><i class="fas fa-gift"></i> Matrícula 100% GRATIS</li>
+</ul>
+</div>
+<a href="https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000457283171" target="_blank" class="btn-premium" style="margin-top: 1.5rem;">¡LO NECESITO!</a>
+</div>
+
+<div class="card">
+<div>
+<h4 style="font-weight: 900; font-size: 1.2rem; color: #ffffff; margin-bottom: 0;">MENSUAL PAC</h4>
+<div class="price-tag">15,66€<span>/mes</span></div>
+<p style="font-size: 0.8rem; font-weight: 700; color: #94a3b8; text-transform: uppercase;">Renovación automática</p>
+<ul class="list-check" style="list-style: none; padding: 0; margin-top: 1.5rem;">
+<li><i class="fas fa-check"></i> Sin permanencia</li>
+<li><i class="fas fa-check"></i> 1 Sesión Personal Trainer</li>
+<li><i class="fas fa-check"></i> Congelamiento 30 días/año</li>
+<li style="color: #ff7300;"><i class="fas fa-gift"></i> Matrícula 100% GRATIS</li>
+</ul>
+</div>
+<a href="https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000748390030" target="_blank" class="btn-outline" style="margin-top: 1.5rem;">Apuntarme ahora</a>
+</div>
+</div>
 """, unsafe_allow_html=True)
 
 # 7. CLASES EXCLUSIVAS
 st.markdown("<div class='section-title'>Clases Grupales <span class='gradient-text'>Incluidas</span></div>", unsafe_allow_html=True)
 
 st.markdown("""
-    <div class="grid-2">
-        <div class="card" style="padding: 0; overflow: hidden; border: none;">
-            <div style="height: 200px; background-image: url('https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&q=80&w=800'); background-size: cover; background-position: center;"></div>
-            <div style="padding: 2rem;">
-                <h3 style="font-weight: 900; font-size: 1.8rem; font-style: italic; margin-bottom: 0.5rem;">🚴 CYCLING</h3>
-                <p style="font-size: 0.9rem; font-weight: 700; color: #ff7300; margin-bottom: 1rem;">🕒 08:00 AM | 09:00 AM | 18:00 PM</p>
-                <p style="color: #64748b; font-weight: 500; font-size: 0.95rem; margin-bottom: 1.5rem;">Clase de ciclismo indoor con intervalos de intensidad variable. Mejora fuerza, potencia y resistencia cardiovascular.</p>
-                <a href="https://api.leadconnectorhq.com/widget/bookings/clases-cycling" target="_blank" class="btn-outline">Reservar Bici</a>
-            </div>
-        </div>
-        
-        <div class="card" style="padding: 0; overflow: hidden; border: none;">
-            <div style="height: 200px; background-image: url('https://images.unsplash.com/photo-1544033527-b192daee1f5b?auto=format&fit=crop&q=80&w=800'); background-size: cover; background-position: center;"></div>
-            <div style="padding: 2rem;">
-                <h3 style="font-weight: 900; font-size: 1.8rem; font-style: italic; margin-bottom: 0.5rem;">🏃 TRX CORE</h3>
-                <p style="font-size: 0.9rem; font-weight: 700; color: #ff7300; margin-bottom: 1rem;">🕒 08:00 AM | 09:00 AM | 18:00 PM</p>
-                <p style="color: #64748b; font-weight: 500; font-size: 0.95rem; margin-bottom: 1.5rem;">Entrenamiento en suspensión utilizando el peso del propio cuerpo. Enfocado totalmente en fortalecer el Core.</p>
-                <a href="https://api.leadconnectorhq.com/widget/bookings/clases-trx" target="_blank" class="btn-outline">Reservar Cupo</a>
-            </div>
-        </div>
-    </div>
+<div class="grid-2">
+<div class="card" style="padding: 0; overflow: hidden; border: 1px solid #1f2937;">
+<div style="height: 200px; background-image: url('https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&q=80&w=800'); background-size: cover; background-position: center;"></div>
+<div style="padding: 2rem;">
+<h3 style="font-weight: 900; font-size: 1.8rem; font-style: italic; margin-bottom: 0.5rem; color: #ffffff;">🚴 CYCLING</h3>
+<p style="font-size: 0.9rem; font-weight: 700; color: #ff7300; margin-bottom: 1rem;">🕒 08:00 AM | 09:00 AM | 18:00 PM</p>
+<p style="color: #cbd5e1; font-weight: 500; font-size: 0.95rem; margin-bottom: 1.5rem;">Clase de ciclismo indoor con intervalos de intensidad variable. Mejora fuerza, potencia y resistencia cardiovascular.</p>
+<a href="https://api.leadconnectorhq.com/widget/bookings/clases-cycling" target="_blank" class="btn-outline">Reservar Bici</a>
+</div>
+</div>
+
+<div class="card" style="padding: 0; overflow: hidden; border: 1px solid #1f2937;">
+<div style="height: 200px; background-image: url('https://images.unsplash.com/photo-1544033527-b192daee1f5b?auto=format&fit=crop&q=80&w=800'); background-size: cover; background-position: center;"></div>
+<div style="padding: 2rem;">
+<h3 style="font-weight: 900; font-size: 1.8rem; font-style: italic; margin-bottom: 0.5rem; color: #ffffff;">🏃 TRX CORE</h3>
+<p style="font-size: 0.9rem; font-weight: 700; color: #ff7300; margin-bottom: 1rem;">🕒 08:00 AM | 09:00 AM | 18:00 PM</p>
+<p style="color: #cbd5e1; font-weight: 500; font-size: 0.95rem; margin-bottom: 1.5rem;">Entrenamiento en suspensión utilizando el peso del propio cuerpo. Enfocado totalmente en fortalecer el Core.</p>
+<a href="https://api.leadconnectorhq.com/widget/bookings/clases-trx" target="_blank" class="btn-outline">Reservar Cupo</a>
+</div>
+</div>
+</div>
 """, unsafe_allow_html=True)
 
 # 8. PREGUNTAS FRECUENTES
@@ -377,13 +370,13 @@ st.markdown("<div id='reserva'></div>", unsafe_allow_html=True)
 st.markdown("<div class='section-title'>Agenda tu <span class='gradient-text'>Prueba Gratis</span></div>", unsafe_allow_html=True)
 
 st.markdown("""
-    <p style="text-align: center; font-size: 1.1rem; color: #64748b; font-weight: 500; max-width: 600px; margin: 0 auto 2rem auto;">
-        Déjanos tus datos si deseas probar <b>1 día GRATIS</b> (residentes de Montilla) o si estás interesado en reservar tu plaza para los <b>Retos de Alto Impacto</b>.
-    </p>
+<p style="text-align: center; font-size: 1.1rem; color: #cbd5e1; font-weight: 500; max-width: 600px; margin: 0 auto 2rem auto;">
+Déjanos tus datos si deseas probar <b>1 día GRATIS</b> (residentes de Montilla) o si estás interesado en reservar tu plaza para los <b>Retos de Alto Impacto</b>.
+</p>
 """, unsafe_allow_html=True)
 
 with st.form("contacto_form"):
-    st.markdown("<h3 style='text-align:center; font-weight:800; color:#0f172a; margin-bottom: 1.5rem;'>Completa tus datos</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align:center; font-weight:900; color:#ffffff; margin-bottom: 1.5rem; font-style: italic; text-transform: uppercase;'>Completa tus datos</h3>", unsafe_allow_html=True)
     nombre = st.text_input("👤 Nombre completo")
     telefono = st.text_input("📱 Teléfono (Móvil)")
     email = st.text_input("✉️ Correo Electrónico")
@@ -401,16 +394,16 @@ st.divider()
 
 # 10. FOOTER
 st.markdown("""
-    <div style="text-align: center; padding: 2rem 0;">
-        <h2 style="font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; color: #0f172a; margin-bottom: 1rem;">
-            <span style='background: #ff7300; color: white; padding: 4px 12px; border-radius: 8px; font-style: italic; margin-right: 5px;'>NA</span> GYM
-        </h2>
-        <p style="color: #64748b; font-weight: 600; font-size: 0.95rem;">
-            📍 Montilla, Córdoba | 📞 +34 612 345 678<br>
-            Lunes a Viernes: 07:00 - 22:00 hs
-        </p>
-        <p style="color: #94a3b8; font-weight: 500; font-size: 0.8rem; margin-top: 2rem;">
-            © 2026 NA GYM Montilla. Todos los derechos reservados.
-        </p>
-    </div>
+<div style="text-align: center; padding: 2rem 0;">
+<h2 style="font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; color: #ffffff; margin-bottom: 1rem;">
+<span style='background: #ff7300; color: white; padding: 4px 12px; border-radius: 8px; font-style: italic; margin-right: 5px;'>NA</span> GYM
+</h2>
+<p style="color: #cbd5e1; font-weight: 600; font-size: 0.95rem;">
+📍 Montilla, Córdoba | 📞 +34 612 345 678<br>
+Lunes a Viernes: 07:00 - 22:00 hs
+</p>
+<p style="color: #64748b; font-weight: 500; font-size: 0.8rem; margin-top: 2rem;">
+© 2026 NA GYM Montilla. Todos los derechos reservados.
+</p>
+</div>
 """, unsafe_allow_html=True)
