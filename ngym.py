@@ -1,191 +1,353 @@
 import streamlit as st
 
-# 1. CONFIGURACIÓN DE PÁGINA (Centrada para mejor lectura y conversión)
+# 1. CONFIGURACIÓN DE PÁGINA (Centrada, ideal para embudos de conversión y móviles)
 st.set_page_config(
-    page_title="NachoGYM Montilla - Transforma tu cuerpo",
-    page_icon="🏋️‍♂️",
-    layout="centered", # <-- Cambiado a 'centered' para que no abarque toda la pantalla
+    page_title="NA GYM Montilla - Transforma tu cuerpo",
+    page_icon="🔥",
+    layout="centered",
     initial_sidebar_state="collapsed"
 )
 
-# 2. ESTILOS CSS PERSONALIZADOS
+# 2. ESTILOS CSS PREMIUM (High-Converting Ads Design)
 st.markdown("""
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;0,900;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Ocultar menú de Streamlit para efecto Landing Page */
+        /* Ocultar UI nativa de Streamlit */
         #MainMenu {visibility: hidden;}
         header {visibility: hidden;}
         footer {visibility: hidden;}
         
-        /* Títulos principales */
-        .brand-text { color: #ff9933; font-style: italic; font-weight: 900; text-transform: uppercase; }
-        .hero-title { font-size: 3rem; line-height: 1.1; font-weight: 900; text-transform: uppercase; font-style: italic;}
-        .section-title { font-size: 2.2rem; text-align: center; margin-top: 2rem; margin-bottom: 2rem; font-weight: 900; text-transform: uppercase; font-style: italic;}
-        
-        /* Botones personalizados para Anclajes (Scroll al formulario) */
-        .btn-primary {
-            display: inline-block;
-            background-color: #ff9933;
-            color: white !important;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            padding: 0.75rem 2rem;
-            border-radius: 8px;
-            width: 100%;
-            transition: background-color 0.3s, transform 0.2s;
-            text-transform: uppercase;
-            font-style: italic;
-        }
-        .btn-primary:hover {
-            background-color: #e68a2e;
-            transform: scale(1.02);
-            color: white !important;
+        /* Tipografía Global */
+        html, body, [class*="css"] {
+            font-family: 'Montserrat', sans-serif !important;
+            scroll-behavior: smooth;
         }
         
-        .btn-secondary {
-            display: inline-block;
-            background-color: white;
-            color: #1e293b !important;
-            border: 2px solid #e2e8f0;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            padding: 0.75rem 2rem;
-            border-radius: 8px;
-            width: 100%;
-            transition: background-color 0.3s;
-            text-transform: uppercase;
+        /* Utilidades de Texto */
+        .gradient-text {
+            background: linear-gradient(135deg, #ff7300 0%, #ffba00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-style: italic;
         }
-        .btn-secondary:hover {
-            background-color: #f8fafc;
-            border-color: #cbd5e1;
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.05;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #0f172a;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 4rem 0 2rem 0;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-style: italic;
+            letter-spacing: -0.03em;
+            color: #0f172a;
+        }
+        
+        /* Botones de Alta Conversión */
+        .btn-premium {
+            display: block;
+            background: linear-gradient(135deg, #ff7300 0%, #ff9500 100%);
+            color: white !important;
+            font-weight: 800;
+            text-align: center;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-style: italic;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 25px rgba(255, 115, 0, 0.3);
+            border: none;
+        }
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 115, 0, 0.4);
+            filter: brightness(1.1);
+        }
+        .btn-outline {
+            display: block;
+            background: transparent;
+            color: #0f172a !important;
+            border: 2px solid #cbd5e1;
+            font-weight: 800;
+            text-align: center;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        .btn-outline:hover {
+            border-color: #0f172a;
+            background: #f8fafc;
+        }
+
+        /* Sistema de Grillas Responsivo */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .hero-title { font-size: 2.5rem; }
+        }
+
+        /* Tarjetas de Diseño */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            border-color: #ff7300;
+        }
+        .card-dark {
+            background: #0f172a;
+            color: white;
+            border: 1px solid #1e293b;
+        }
+        .card-dark:hover {
+            border-color: #ff7300;
+        }
+        .card-highlight {
+            border: 3px solid #ff7300;
+            transform: scale(1.05);
+            position: relative;
+        }
+        .card-highlight:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+        
+        /* Elementos UI */
+        .badge {
+            display: inline-block;
+            background: rgba(255, 115, 0, 0.1);
+            color: #ff7300;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        .price-tag {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #0f172a;
+            line-height: 1;
+            margin: 1rem 0;
+        }
+        .price-tag-dark { color: white; }
+        .price-tag span { font-size: 1rem; color: #64748b; font-weight: 600; }
+        
+        .list-check li {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .list-check i { color: #ff7300; margin-right: 10px; font-size: 1.2rem; }
+        
+        /* Fix Streamlit Form */
+        div[data-testid="stForm"] {
+            border: none !important;
+            padding: 2rem !important;
+            background: white !important;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
         }
     </style>
 """, unsafe_allow_html=True)
 
-# 3. BARRA SUPERIOR (Logo)
-st.markdown("### <span style='color: white; background-color: #ff9933; padding: 5px 10px; border-radius: 5px; font-style: italic;'>NACHO</span> <span class='brand-text' style='color: #1e293b;'>GYM</span>", unsafe_allow_html=True)
+# 3. TOP BAR
+st.markdown("""
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0;">
+        <div style="font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; color: #0f172a;">
+            <span style='background: #ff7300; color: white; padding: 4px 12px; border-radius: 8px; font-style: italic; margin-right: 5px;'>NA</span> GYM
+        </div>
+        <div style="font-weight: 700; font-size: 0.9rem; color: #64748b;">
+            📍 Montilla, Córdoba
+        </div>
+    </div>
+""", unsafe_allow_html=True)
 st.divider()
 
-# 4. HERO SECTION
-col1, col2 = st.columns([1.2, 1], gap="large")
+# 4. HERO SECTION (Optimizado para Conversión)
+st.markdown("""
+    <div style="text-align: center; padding: 2rem 0;">
+        <div style="display: inline-block; background: #fff7ed; color: #ff7300; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 800; margin-bottom: 1.5rem; border: 1px solid #ffedd5; font-size: 0.9rem;">
+            🔥 MATRÍCULA 100% GRATIS - SOLO ESTA SEMANA
+        </div>
+        <h1 class="hero-title">Transforma tu cuerpo en <span class="gradient-text">Montilla.</span></h1>
+        <p style="font-size: 1.2rem; color: #64748b; font-weight: 500; max-width: 600px; margin: 0 auto 2.5rem auto;">
+            Entrenamiento personalizado, tecnología y los mejores programas de pérdida de grasa en Córdoba.
+        </p>
+    </div>
+""", unsafe_allow_html=True)
 
-with col1:
-    st.markdown("<p style='color: #ff9933; font-weight: bold;'>🔥 Matrícula 100% Gratis - Solo esta semana</p>", unsafe_allow_html=True)
-    st.markdown("<div class='hero-title'>Transforma tu cuerpo en <span style='color: #ff9933;'>Montilla.</span></div>", unsafe_allow_html=True)
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.write("Entrenamiento personalizado, tecnología InBody y los mejores programas de pérdida de grasa en Córdoba.")
-    st.markdown("<br>", unsafe_allow_html=True)
-    
-    btn_col1, btn_col2 = st.columns(2)
-    with btn_col1:
-        # Enlace con ancla al formulario
-        st.markdown("<a href='#reserva' class='btn-primary'>¡LO NECESITO!</a>", unsafe_allow_html=True)
-    with btn_col2:
-        st.markdown("<a href='#reserva' class='btn-secondary'>1 Día Gratis</a>", unsafe_allow_html=True)
+col_h1, col_h2 = st.columns(2)
+with col_h1:
+    st.markdown("<a href='#reserva' class='btn-premium'>¡EMPEZAR AHORA! ➔</a>", unsafe_allow_html=True)
+with col_h2:
+    st.markdown("<a href='#reserva' class='btn-outline'>PROBAR 1 DÍA GRATIS</a>", unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)
+st.image("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1200", use_container_width=True)
+
+st.markdown("""
+    <div style="text-align: center; margin-top: 1.5rem; color: #64748b; font-weight: 600; font-size: 1rem;">
+        ⭐⭐⭐⭐⭐ Únete a más de <span style="color: #0f172a; font-weight: 800;">500+ socios</span> activos.
+    </div>
+""", unsafe_allow_html=True)
+
+# 5. PROGRAMAS EXCLUSIVOS (Dark Mode Cards)
+st.markdown("<div class='section-title'>Retos de <span class='gradient-text'>Alto Impacto</span></div>", unsafe_allow_html=True)
+
+st.markdown("""
+    <div class="grid-2">
+        <!-- Programa 1 -->
+        <div class="card card-dark">
+            <div>
+                <span class="badge" style="background: rgba(255,255,255,0.1); color: #ffba00;">⏱️ 6 SEMANAS</span>
+                <h3 style="font-size: 2rem; font-weight: 900; font-style: italic; margin-bottom: 0;">REDUCE LA BARRIGA</h3>
+                <div class="price-tag price-tag-dark">99€ <span style="text-decoration: line-through; color: #94a3b8;">Antes 150€</span></div>
+                <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 1.5rem;">Elimina la grasa visceral y subcutánea del abdomen. Trabajo focalizado en el core.</p>
+                <ul class="list-check" style="list-style: none; padding: 0; color: white;">
+                    <li><i class="fas fa-check-circle"></i> Lunes a Viernes 15:00 hs</li>
+                    <li><i class="fas fa-check-circle"></i> 3 Sesiones presenciales/semana</li>
+                    <li><i class="fas fa-check-circle"></i> Guía "Anti-Inflamación"</li>
+                    <li><i class="fas fa-check-circle"></i> Medición de perímetros semanal</li>
+                </ul>
+            </div>
+            <a href="#reserva" class="btn-premium" style="margin-top: 2rem;">QUIERO ACCEDER ➔</a>
+        </div>
         
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.info("💡 **¿Aún tienes dudas?** Ven a probar **1 día GRATIS** sin compromiso. Exclusivo para residentes de Montilla.")
+        <!-- Programa 2 -->
+        <div class="card card-dark">
+            <div>
+                <span class="badge" style="background: rgba(255,255,255,0.1); color: #ffba00;">⏱️ 3 MESES TOTAL</span>
+                <h3 style="font-size: 2rem; font-weight: 900; font-style: italic; margin-bottom: 0;">ADIÓS GRASA TOTAL</h3>
+                <div class="price-tag price-tag-dark">109€ <span style="text-decoration: line-through; color: #94a3b8;">Antes 199€</span></div>
+                <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 1.5rem;">Pérdida de peso general y acondicionamiento físico. Para un cambio integral definitivo.</p>
+                <ul class="list-check" style="list-style: none; padding: 0; color: white;">
+                    <li><i class="fas fa-check-circle"></i> Lunes a Viernes 10:00 AM</li>
+                    <li><i class="fas fa-check-circle"></i> 5 Sesiones presenciales/semana</li>
+                    <li><i class="fas fa-check-circle"></i> Guía "Quema Grasa Total"</li>
+                    <li><i class="fas fa-check-circle"></i> Seguimiento progresivo mensual</li>
+                </ul>
+            </div>
+            <a href="#reserva" class="btn-premium" style="margin-top: 2rem;">¡LO NECESITO AHORA! ➔</a>
+        </div>
+    </div>
+""", unsafe_allow_html=True)
 
-with col2:
-    st.image("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800", use_container_width=True, caption="Sede Montilla | Lunes a Viernes 07:00 - 22:00 hs")
+# 6. PLANES DE MEMBRESÍA
+st.markdown("<div class='section-title'>Planes de <span class='gradient-text'>Membresía</span></div>", unsafe_allow_html=True)
 
-st.divider()
+st.markdown("""
+    <div class="grid-3">
+        <!-- Plan 1 -->
+        <div class="card">
+            <div>
+                <h4 style="font-weight: 900; font-size: 1.2rem; color: #0f172a; margin-bottom: 0;">ANUAL ONECLUB</h4>
+                <div class="price-tag">16,33€<span>/mes</span></div>
+                <p style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Pago único anual 196€</p>
+                <ul class="list-check" style="list-style: none; padding: 0; margin-top: 1.5rem;">
+                    <li><i class="fas fa-check"></i> 1 Mes de regalo (tú + amigo)</li>
+                    <li><i class="fas fa-check"></i> Entrenamiento Personalizado</li>
+                    <li><i class="fas fa-check"></i> InBody y Programa</li>
+                    <li style="color: #ff7300;"><i class="fas fa-gift"></i> Matrícula 100% GRATIS</li>
+                </ul>
+            </div>
+            <a href="https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000457283253" target="_blank" class="btn-outline" style="margin-top: 1.5rem;">Adquirir plan</a>
+        </div>
+        
+        <!-- Plan 2 (Destacado) -->
+        <div class="card card-highlight">
+            <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #ff7300; color: white; padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 0.8rem; letter-spacing: 1px;">EL MÁS COMPLETO</div>
+            <div>
+                <h4 style="font-weight: 900; font-size: 1.2rem; color: #0f172a; margin-bottom: 0;">ANUAL MULTICLUB</h4>
+                <div class="price-tag">26,33€<span>/mes</span></div>
+                <p style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Pago único anual 296€</p>
+                <ul class="list-check" style="list-style: none; padding: 0; margin-top: 1.5rem;">
+                    <li><i class="fas fa-star"></i> Acceso a TODA la red</li>
+                    <li><i class="fas fa-check"></i> 1 Mes de regalo (tú + amigo)</li>
+                    <li><i class="fas fa-check"></i> Entrenamiento + InBody</li>
+                    <li style="color: #ff7300;"><i class="fas fa-gift"></i> Matrícula 100% GRATIS</li>
+                </ul>
+            </div>
+            <a href="https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000457283171" target="_blank" class="btn-premium" style="margin-top: 1.5rem;">¡LO NECESITO!</a>
+        </div>
+        
+        <!-- Plan 3 -->
+        <div class="card">
+            <div>
+                <h4 style="font-weight: 900; font-size: 1.2rem; color: #0f172a; margin-bottom: 0;">MENSUAL PAC</h4>
+                <div class="price-tag">15,66€<span>/mes</span></div>
+                <p style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Renovación automática</p>
+                <ul class="list-check" style="list-style: none; padding: 0; margin-top: 1.5rem;">
+                    <li><i class="fas fa-check"></i> Sin permanencia</li>
+                    <li><i class="fas fa-check"></i> 1 Sesión Personal Trainer</li>
+                    <li><i class="fas fa-check"></i> Congelamiento 30 días/año</li>
+                    <li style="color: #ff7300;"><i class="fas fa-gift"></i> Matrícula 100% GRATIS</li>
+                </ul>
+            </div>
+            <a href="https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000748390030" target="_blank" class="btn-outline" style="margin-top: 1.5rem;">Apuntarme ahora</a>
+        </div>
+    </div>
+""", unsafe_allow_html=True)
 
-# 5. PROGRAMAS EXCLUSIVOS (Botones dirigen al Formulario)
-st.markdown("<div class='section-title'>Retos de <span style='color: #ff9933;'>Alto Impacto</span></div>", unsafe_allow_html=True)
+# 7. CLASES EXCLUSIVAS
+st.markdown("<div class='section-title'>Clases Grupales <span class='gradient-text'>Incluidas</span></div>", unsafe_allow_html=True)
 
-prog1, prog2 = st.columns(2, gap="large")
-
-with prog1:
-    st.markdown("### <span class='brand-text'>REDUCE LA BARRIGA</span>", unsafe_allow_html=True)
-    st.caption("⏱️ 6 Semanas Intensivas | Lunes a Viernes 15:00 hs")
-    st.write("Elimina la grasa visceral y subcutánea del abdomen. No es cardio genérico; es trabajo focalizado en el core.")
-    st.write("✔️ 3 Sesiones presenciales / semana")
-    st.write("✔️ Guía nutricional 'Anti-Inflamación'")
-    st.write("✔️ Medición de perímetros semanal")
-    st.metric(label="Inversión única", value="99€", delta="Antes 150€", delta_color="normal")
-    st.markdown("<br><a href='#reserva' class='btn-primary'>Quiero acceder al programa</a>", unsafe_allow_html=True)
-
-with prog2:
-    st.markdown("### <span class='brand-text'>ADIÓS GRASA TOTAL</span>", unsafe_allow_html=True)
-    st.caption("⏱️ 3 Meses Intensivos | Lunes a Viernes 10:00 AM")
-    st.write("Pérdida de peso general y acondicionamiento físico total. Para quienes buscan un cambio integral definitivo.")
-    st.write("✔️ 5 Sesiones presenciales / semana")
-    st.write("✔️ Guía nutricional 'Quema Grasa Total'")
-    st.write("✔️ Seguimiento mensual progresivo")
-    st.metric(label="Inversión única", value="109€", delta="Antes 199€", delta_color="normal")
-    st.markdown("<br><a href='#reserva' class='btn-primary'>¡Lo necesito ahora!</a>", unsafe_allow_html=True)
-
-st.divider()
-
-# 6. PLANES DE MEMBRESÍA (Enlaces Externos Oficiales)
-st.markdown("<div class='section-title'>Planes de <span style='color: #ff9933;'>Membresía</span></div>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: gray;'>Matrícula GRATIS en todos nuestros planes por tiempo limitado.</p>", unsafe_allow_html=True)
-
-plan1, plan2, plan3 = st.columns(3, gap="medium")
-
-with plan1:
-    st.subheader("ANUAL ONECLUB")
-    st.markdown("## 16,33€ <span style='font-size:1rem; color:gray;'>/mes</span>", unsafe_allow_html=True)
-    st.caption("Pago único anual 196€")
-    st.write("✅ 1 Mes de regalo (tú + 1 amigo)")
-    st.write("✅ Entrenamiento Personalizado")
-    st.write("✅ InBody y Programa")
-    st.success("Matrícula GRATIS")
-    # Link externo
-    st.link_button("Adquirir plan", "https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000457283253", use_container_width=True)
-
-with plan2:
-    st.warning("⭐ EL MÁS COMPLETO")
-    st.subheader("ANUAL MULTICLUB")
-    st.markdown("## 26,33€ <span style='font-size:1rem; color:gray;'>/mes</span>", unsafe_allow_html=True)
-    st.caption("Pago único anual 296€")
-    st.write("✅ Acceso a TODA la red")
-    st.write("✅ 1 Mes de regalo (tú + 1 amigo)")
-    st.write("✅ Entrenamiento + InBody")
-    st.success("Matrícula GRATIS")
-    # Link externo
-    st.link_button("¡Lo necesito!", "https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000457283171", type="primary", use_container_width=True)
-
-with plan3:
-    st.subheader("MENSUAL PAC")
-    st.markdown("## 15,66€ <span style='font-size:1rem; color:gray;'>/mes</span>", unsafe_allow_html=True)
-    st.caption("Renovación automática")
-    st.write("✅ Sin permanencia")
-    st.write("✅ 1 Sesión Personal Trainer")
-    st.write("✅ Congelamiento 30 días/año")
-    st.success("Matrícula GRATIS")
-    # Link externo
-    st.link_button("Apuntarme ahora", "https://www.energyclub.cl/checkout?clubId=f1a6ccd9-e66a-4963-a61b-89777e9367a0&planId=4312902000748390030", use_container_width=True)
-
-st.divider()
-
-# 7. CLASES EXCLUSIVAS (Enlaces Externos de LeadConnector)
-st.markdown("<div class='section-title'>Clases Grupales <span style='color: #ff9933;'>Incluidas</span></div>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: gray;'>Solo para clientes activos. Reserva obligatoria previa a la clase.</p>", unsafe_allow_html=True)
-
-clase1, clase2 = st.columns(2, gap="large")
-
-with clase1:
-    st.image("https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&q=80&w=800", use_container_width=True)
-    st.markdown("### 🚴 <span class='brand-text'>CYCLING</span>", unsafe_allow_html=True)
-    st.write("**Horarios:** Mañana (08:00 | 09:00) - Tarde (18:00 hs)")
-    st.write("Clase de ciclismo indoor con intervalos de intensidad variable. Mejora fuerza, potencia y resistencia cardiovascular.")
-    st.link_button("Reservar mi bici", "https://api.leadconnectorhq.com/widget/bookings/clases-cycling", use_container_width=True)
-
-with clase2:
-    st.image("https://images.unsplash.com/photo-1544033527-b192daee1f5b?auto=format&fit=crop&q=80&w=800", use_container_width=True)
-    st.markdown("### 🏃 <span class='brand-text'>TRX CORE</span>", unsafe_allow_html=True)
-    st.write("**Horarios:** Mañana (08:00 | 09:00) - Tarde (18:00 hs)")
-    st.write("Entrenamiento en suspensión utilizando el peso del propio cuerpo. Enfocado totalmente en fortalecer el Core.")
-    st.link_button("Reservar cupo", "https://api.leadconnectorhq.com/widget/bookings/clases-trx", use_container_width=True)
-
-st.divider()
+st.markdown("""
+    <div class="grid-2">
+        <div class="card" style="padding: 0; overflow: hidden; border: none;">
+            <div style="height: 200px; background-image: url('https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&q=80&w=800'); background-size: cover; background-position: center;"></div>
+            <div style="padding: 2rem;">
+                <h3 style="font-weight: 900; font-size: 1.8rem; font-style: italic; margin-bottom: 0.5rem;">🚴 CYCLING</h3>
+                <p style="font-size: 0.9rem; font-weight: 700; color: #ff7300; margin-bottom: 1rem;">🕒 08:00 AM | 09:00 AM | 18:00 PM</p>
+                <p style="color: #64748b; font-weight: 500; font-size: 0.95rem; margin-bottom: 1.5rem;">Clase de ciclismo indoor con intervalos de intensidad variable. Mejora fuerza, potencia y resistencia cardiovascular.</p>
+                <a href="https://api.leadconnectorhq.com/widget/bookings/clases-cycling" target="_blank" class="btn-outline">Reservar Bici</a>
+            </div>
+        </div>
+        
+        <div class="card" style="padding: 0; overflow: hidden; border: none;">
+            <div style="height: 200px; background-image: url('https://images.unsplash.com/photo-1544033527-b192daee1f5b?auto=format&fit=crop&q=80&w=800'); background-size: cover; background-position: center;"></div>
+            <div style="padding: 2rem;">
+                <h3 style="font-weight: 900; font-size: 1.8rem; font-style: italic; margin-bottom: 0.5rem;">🏃 TRX CORE</h3>
+                <p style="font-size: 0.9rem; font-weight: 700; color: #ff7300; margin-bottom: 1rem;">🕒 08:00 AM | 09:00 AM | 18:00 PM</p>
+                <p style="color: #64748b; font-weight: 500; font-size: 0.95rem; margin-bottom: 1.5rem;">Entrenamiento en suspensión utilizando el peso del propio cuerpo. Enfocado totalmente en fortalecer el Core.</p>
+                <a href="https://api.leadconnectorhq.com/widget/bookings/clases-trx" target="_blank" class="btn-outline">Reservar Cupo</a>
+            </div>
+        </div>
+    </div>
+""", unsafe_allow_html=True)
 
 # 8. PREGUNTAS FRECUENTES
-st.markdown("<div class='section-title'>Preguntas <span style='color: #ff9933;'>Frecuentes</span></div>", unsafe_allow_html=True)
+st.markdown("<div class='section-title'>Preguntas <span class='gradient-text'>Frecuentes</span></div>", unsafe_allow_html=True)
 
 faqs = [
     ("¿Cuáles son las formas de pago?", "Presencial: Aceptamos tarjetas de crédito/débito directamente en la recepción.\n\nOnline: Aceptamos pagos a través de nuestros enlaces oficiales.\n\nNota: Para ofertas trimestrales, se debe abonar el total al iniciar para congelar el precio promocional."),
@@ -210,51 +372,45 @@ for q, a in faqs:
     with st.expander(f"**{q}**"):
         st.write(a)
 
-st.divider()
-
 # 9. SECCIÓN DE CONTACTO Y CONVERSIÓN
-# El div con id='reserva' permite que los botones html viajen hasta aquí
 st.markdown("<div id='reserva'></div>", unsafe_allow_html=True)
-st.markdown("<div class='section-title'>Agenda tu <span style='color: #ff9933;'>Prueba Gratis</span></div>", unsafe_allow_html=True)
+st.markdown("<div class='section-title'>Agenda tu <span class='gradient-text'>Prueba Gratis</span></div>", unsafe_allow_html=True)
 
-cont1, cont2 = st.columns(2, gap="large")
+st.markdown("""
+    <p style="text-align: center; font-size: 1.1rem; color: #64748b; font-weight: 500; max-width: 600px; margin: 0 auto 2rem auto;">
+        Déjanos tus datos si deseas probar <b>1 día GRATIS</b> (residentes de Montilla) o si estás interesado en reservar tu plaza para los <b>Retos de Alto Impacto</b>.
+    </p>
+""", unsafe_allow_html=True)
 
-with cont1:
-    st.write("Exclusivo para residentes de Montilla o interesados en los **Retos de Alto Impacto**.")
-    st.write("✔️ **Sin compromisos**")
-    st.write("✔️ **Monitor asignado para guiarte**")
-    st.write("✔️ **Estacionamiento Gratis**")
-    st.write("Déjanos tus datos y confirmaremos la disponibilidad de tu cita en breve.")
-
-with cont2:
-    with st.form("contacto_form"):
-        st.subheader("Completa tus datos")
-        nombre = st.text_input("Nombre completo")
-        telefono = st.text_input("Teléfono (Móvil)") # Campo añadido por requisito
-        email = st.text_input("Correo Electrónico")
-        
-        submit = st.form_submit_button("AGENDAR MI CITA", type="primary", use_container_width=True)
-        
-        if submit:
-            if nombre and telefono and email:
-                st.success(f"¡Reserva solicitada, {nombre}! Nos comunicaremos al {telefono} pronto para confirmar.")
-            else:
-                st.warning("Por favor, completa los tres campos obligatorios.")
+with st.form("contacto_form"):
+    st.markdown("<h3 style='text-align:center; font-weight:800; color:#0f172a; margin-bottom: 1.5rem;'>Completa tus datos</h3>", unsafe_allow_html=True)
+    nombre = st.text_input("👤 Nombre completo")
+    telefono = st.text_input("📱 Teléfono (Móvil)")
+    email = st.text_input("✉️ Correo Electrónico")
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    submit = st.form_submit_button("SOLICITAR MI PLAZA ➔", type="primary", use_container_width=True)
+    
+    if submit:
+        if nombre and telefono and email:
+            st.success(f"¡Solicitud enviada, {nombre}! Nos comunicaremos al {telefono} lo antes posible para confirmar.")
+        else:
+            st.warning("⚠️ Por favor, completa los tres campos obligatorios para poder contactarte.")
 
 st.divider()
 
 # 10. FOOTER
-footer1, footer2, footer3 = st.columns(3)
-with footer1:
-    st.markdown("### <span style='color: white; background-color: #ff9933; padding: 5px; border-radius: 5px; font-style: italic;'>NACHO</span> <span class='brand-text' style='color: #1e293b;'>GYM</span>", unsafe_allow_html=True)
-    st.caption("El gimnasio líder en Montilla. Especialistas en transformación física y entrenamiento de alta intensidad.")
-with footer2:
-    st.write("**Ubicación y Contacto**")
-    st.write("📍 Montilla, Córdoba")
-    st.write("📞 +34 612 345 678")
-with footer3:
-    st.write("**Horarios de Atención**")
-    st.write("Lunes a Viernes: 07:00 - 22:00 hs")
-    st.write("Sábados y Domingos: Cerrado")
-
-st.markdown("<p style='text-align: center; color: gray; margin-top: 2rem;'>© 2026 NachoGYM Montilla. Todos los derechos reservados.</p>", unsafe_allow_html=True)
+st.markdown("""
+    <div style="text-align: center; padding: 2rem 0;">
+        <h2 style="font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; color: #0f172a; margin-bottom: 1rem;">
+            <span style='background: #ff7300; color: white; padding: 4px 12px; border-radius: 8px; font-style: italic; margin-right: 5px;'>NA</span> GYM
+        </h2>
+        <p style="color: #64748b; font-weight: 600; font-size: 0.95rem;">
+            📍 Montilla, Córdoba | 📞 +34 612 345 678<br>
+            Lunes a Viernes: 07:00 - 22:00 hs
+        </p>
+        <p style="color: #94a3b8; font-weight: 500; font-size: 0.8rem; margin-top: 2rem;">
+            © 2026 NA GYM Montilla. Todos los derechos reservados.
+        </p>
+    </div>
+""", unsafe_allow_html=True)
