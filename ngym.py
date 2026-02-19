@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Inyección de CSS (Tailwind + Estilos personalizados)
+# Inyección de CSS (Tailwind + Animaciones + Estilos de formulario)
 st.markdown("""
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -16,29 +16,39 @@ st.markdown("""
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         
         html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-        }
-        
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
         .stApp { background-color: #f8fafc; }
 
-        /* Ocultar elementos de Streamlit */
+        /* Ocultar elementos de Streamlit para una landing page limpia */
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
         header {visibility: hidden;}
+        .stDeployButton {display:none;}
         
-        .hero-title { line-height: 1.1; letter-spacing: -0.02em; }
-        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
-
+        /* Animaciones personalizadas */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        
         /* Estilo para los acordeones FAQ */
         details summary::-webkit-details-marker { display:none; }
         summary { list-style: none; outline: none; }
         details[open] summary i { transform: rotate(45deg); color: #ff9933; }
         summary i { transition: transform 0.3s ease; }
         
-        /* Ajuste de imágenes para que no se corten en Streamlit */
-        .img-container img { width: 100%; height: auto; object-fit: cover; }
+        /* Ajustes de Streamlit Forms */
+        div[data-testid="stForm"] {
+            border: none !important;
+            padding: 0 !important;
+            background: transparent !important;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Corregir margen superior por nav fixed */
+        .content-section { padding-top: 5rem; }
     </style>
 """, unsafe_allow_html=True)
 
@@ -67,11 +77,11 @@ st.markdown("""
 st.markdown("""
     <section class="pt-40 pb-20 px-6">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-            <div class="space-y-8 animate-in fade-in slide-in-from-left duration-700">
+            <div class="space-y-8 animate-fade-in">
                 <div class="inline-flex items-center gap-2 bg-orange-100 text-[#ff9933] px-4 py-2 rounded-full font-bold text-sm tracking-wide uppercase">
                     <i class="fas fa-fire"></i> Matrícula 100% Gratis - Solo esta semana
                 </div>
-                <h1 class="text-5xl md:text-7xl font-black hero-title text-slate-900 uppercase italic">
+                <h1 class="text-5xl md:text-7xl font-black leading-[1.1] tracking-tight text-slate-900 uppercase italic">
                     Transforma tu cuerpo en <span class="text-[#ff9933]">Montilla.</span>
                 </h1>
                 <p class="text-xl text-slate-600 max-w-lg leading-relaxed">
@@ -119,7 +129,7 @@ st.markdown("""
             <div class="relative">
                 <div class="absolute -inset-4 bg-[#ff9933]/20 rounded-3xl blur-3xl"></div>
                 <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800" 
-                     class="relative rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-500 object-cover aspect-square">
+                     class="relative rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-500 object-cover w-full aspect-square">
                 <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl hidden md:block border border-slate-100">
                     <div class="flex items-center gap-4">
                         <div class="bg-green-100 p-3 rounded-full text-green-600">
@@ -211,10 +221,10 @@ st.markdown("""
                 <p class="text-slate-500 text-lg font-medium tracking-tight">Matrícula GRATIS en todos nuestros planes por tiempo limitado.</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8 items-center">
-                <!-- Anual OneClub -->
-                <div class="bg-slate-50 rounded-3xl p-8 border-2 border-slate-100 flex flex-col hover:shadow-2xl transition-all h-full card-hover">
-                    <h4 class="text-xl font-black mb-2 uppercase tracking-tighter italic">Anual OneClub</h4>
+            <div class="grid md:grid-cols-3 gap-8 items-stretch">
+                <!-- Plan Anual OneClub -->
+                <div class="bg-slate-50 rounded-3xl p-8 border-2 border-slate-100 flex flex-col card-hover">
+                    <h4 class="text-xl font-black mb-2 uppercase italic tracking-tighter">Anual OneClub</h4>
                     <div class="mb-6 text-slate-900">
                         <span class="text-4xl font-black">16,33€</span>
                         <span class="text-slate-500 font-bold">/mes</span>
@@ -226,31 +236,31 @@ st.markdown("""
                         <li class="flex items-center gap-2 text-sm font-semibold"><i class="fas fa-check-circle text-[#ff9933]"></i> Evaluación Inbody Incluida</li>
                         <li class="flex items-center gap-2 text-sm font-bold text-[#ff9933]">Matrícula 100% GRATIS</li>
                     </ul>
-                    <button class="w-full py-4 border-2 border-slate-200 rounded-xl font-black text-center hover:bg-slate-900 hover:text-white transition-all uppercase italic">Adquirir plan</button>
+                    <button class="w-full py-4 border-2 border-slate-200 rounded-xl font-black hover:bg-slate-900 hover:text-white transition-all uppercase italic">Adquirir plan</button>
                 </div>
 
-                <!-- Anual MultiClub (Recomendado) -->
-                <div class="bg-white rounded-3xl p-8 border-4 border-[#ff9933] flex flex-col relative scale-105 shadow-2xl shadow-orange-100 h-full">
+                <!-- Plan Anual MultiClub (Recomendado) -->
+                <div class="bg-white rounded-3xl p-8 border-4 border-[#ff9933] flex flex-col relative scale-105 shadow-2xl shadow-orange-100">
                     <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#ff9933] text-white px-6 py-1.5 rounded-full font-black text-xs uppercase tracking-widest italic">El más recomendado</div>
-                    <h4 class="text-xl font-black mb-2 uppercase tracking-tighter italic">Anual MultiClub</h4>
+                    <h4 class="text-xl font-black mb-2 uppercase italic tracking-tighter">Anual MultiClub</h4>
                     <div class="mb-6 text-slate-900">
                         <span class="text-4xl font-black">26,33€</span>
                         <span class="text-slate-500 font-bold">/mes</span>
                         <p class="text-xs text-slate-400 font-bold mt-1 uppercase italic tracking-wider">Pago único anual 296€</p>
                     </div>
-                    <ul class="space-y-4 mb-10 flex-grow">
-                        <li class="flex items-center gap-2 text-sm font-bold"><i class="fas fa-check-circle text-[#ff9933]"></i> Acceso a TODA la red de clubes</li>
-                        <li class="flex items-center gap-2 text-sm font-bold"><i class="fas fa-check-circle text-[#ff9933]"></i> 1 Mes de regalo para ti + 1 Amigo</li>
-                        <li class="flex items-center gap-2 text-sm font-bold"><i class="fas fa-check-circle text-[#ff9933]"></i> Entrenamiento Personalizado</li>
-                        <li class="flex items-center gap-2 text-sm font-bold"><i class="fas fa-check-circle text-[#ff9933]"></i> Evaluación física + InBody</li>
-                        <li class="flex items-center gap-2 text-sm font-bold text-[#ff9933]">Matrícula GRATIS</li>
+                    <ul class="space-y-4 mb-10 flex-grow text-sm font-bold">
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-[#ff9933]"></i> Acceso a TODA la red de clubes</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-[#ff9933]"></i> 1 Mes de regalo para ti + 1 Amigo</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-[#ff9933]"></i> Entrenamiento Personalizado</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-[#ff9933]"></i> Evaluación física + InBody</li>
+                        <li class="flex items-center gap-2 text-[#ff9933]">Matrícula GRATIS</li>
                     </ul>
-                    <button class="w-full py-4 bg-[#ff9933] text-white rounded-xl font-black text-center hover:bg-orange-600 transition-all uppercase shadow-lg shadow-orange-200 italic">¡Lo necesito!</button>
+                    <button class="w-full py-4 bg-[#ff9933] text-white rounded-xl font-black hover:bg-orange-600 transition-all shadow-lg uppercase italic shadow-orange-200">¡Lo necesito!</button>
                 </div>
 
-                <!-- Mensual PAC -->
-                <div class="bg-slate-50 rounded-3xl p-8 border-2 border-slate-100 flex flex-col hover:shadow-2xl transition-all h-full card-hover">
-                    <h4 class="text-xl font-black mb-2 uppercase tracking-tighter italic">Mensual PAC</h4>
+                <!-- Plan Mensual PAC -->
+                <div class="bg-slate-50 rounded-3xl p-8 border-2 border-slate-100 flex flex-col card-hover">
+                    <h4 class="text-xl font-black mb-2 uppercase italic tracking-tighter">Mensual PAC</h4>
                     <div class="mb-6 text-slate-900">
                         <span class="text-4xl font-black">15,66€</span>
                         <span class="text-slate-500 font-bold">/mes</span>
@@ -262,7 +272,7 @@ st.markdown("""
                         <li class="flex items-center gap-2 text-sm font-semibold"><i class="fas fa-check-circle text-[#ff9933]"></i> Congelamiento 30 días / año</li>
                         <li class="flex items-center gap-2 text-sm font-bold text-[#ff9933]">Matrícula GRATIS</li>
                     </ul>
-                    <button class="w-full py-4 border-2 border-slate-200 rounded-xl font-black text-center hover:bg-slate-900 hover:text-white transition-all uppercase italic">Apuntarme ahora</button>
+                    <button class="w-full py-4 border-2 border-slate-200 rounded-xl font-black hover:bg-slate-900 hover:text-white transition-all uppercase italic">Apuntarme ahora</button>
                 </div>
             </div>
         </div>
@@ -285,16 +295,16 @@ st.markdown("""
                 </div>
                 <div class="flex flex-col gap-3">
                     <div class="bg-slate-800 border border-slate-700 p-4 rounded-2xl flex items-center gap-4">
-                        <i class="fas fa-clock text-[#ff9933] text-xl"></i>
+                        <i class="fas fa-clock text-[#ff9933] text-2xl"></i>
                         <div>
-                            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Mañana</p>
+                            <p class="text-xs font-bold text-slate-500 uppercase">Mañana</p>
                             <p class="text-lg font-black italic">08:00 AM | 09:00 AM</p>
                         </div>
                     </div>
                     <div class="bg-slate-800 border border-slate-700 p-4 rounded-2xl flex items-center gap-4">
-                        <i class="fas fa-clock text-[#ff9933] text-xl"></i>
+                        <i class="fas fa-clock text-[#ff9933] text-2xl"></i>
                         <div>
-                            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Tarde / Noche</p>
+                            <p class="text-xs font-bold text-slate-500 uppercase">Tarde / Noche</p>
                             <p class="text-lg font-black italic">18:00 PM (06:00 PM)</p>
                         </div>
                     </div>
@@ -310,7 +320,7 @@ st.markdown("""
                             <i class="fas fa-bicycle text-[#ff9933] text-3xl"></i>
                             <h3 class="text-4xl font-black uppercase italic tracking-tighter">Cycling</h3>
                         </div>
-                        <p class="text-slate-300 text-lg mb-8 max-w-sm leading-relaxed font-medium">
+                        <p class="text-slate-300 text-lg mb-8 max-w-sm font-medium leading-relaxed">
                             Ciclismo indoor con intervalos de intensidad variable. Mejora fuerza, potencia y resistencia cardiovascular.
                         </p>
                         <button class="bg-[#ff9933] text-white px-8 py-4 rounded-2xl font-black text-sm uppercase italic hover:bg-orange-600 transition-all text-center flex items-center justify-center gap-2">
@@ -327,7 +337,7 @@ st.markdown("""
                             <i class="fas fa-running text-[#ff9933] text-3xl"></i>
                             <h3 class="text-4xl font-black uppercase italic tracking-tighter">TRX Core</h3>
                         </div>
-                        <p class="text-slate-300 text-lg mb-8 max-w-sm leading-relaxed font-medium">
+                        <p class="text-slate-300 text-lg mb-8 max-w-sm font-medium leading-relaxed">
                             Entrenamiento en suspensión. Enfocado totalmente en fortalecer el Core, integrando espalda, hombros y piernas.
                         </p>
                         <button class="bg-white text-slate-900 px-8 py-4 rounded-2xl font-black text-sm uppercase italic hover:bg-slate-100 transition-all text-center flex items-center justify-center gap-2">
@@ -340,8 +350,7 @@ st.markdown("""
     </section>
 """, unsafe_allow_html=True)
 
-# --- FAQ SECCIÓN COMPLETA ---
-# Aquí incluimos todas las preguntas del original
+# --- FAQ SECCIÓN COMPLETA (19 PREGUNTAS) ---
 faqs = [
     ("¿Cuáles son las formas de pago?", "Presencial: Aceptamos tarjetas de crédito/débito directamente en la recepción del gimnasio en Montilla.\nOnline: Aceptamos pagos a través de nuestros enlaces oficiales y plataforma web.\nNota: Para las ofertas trimestrales, se debe abonar el total al iniciar para congelar el precio promocional."),
     ("¿Hay que pagar matrícula de inscripción?", "¡Oferta Actual!: Estamos de oferta y actualmente TODA la matrícula es 100% GRATIS."),
@@ -357,42 +366,35 @@ faqs = [
     ("¿Puedo suspender mi membresía temporalmente?", "Sí, en planes mensuales puedes suspender hasta 1 mes máximo. Requiere aviso previo en recepción o plataforma y se aplica solo una vez cada 6 meses."),
     ("¿Tienen estacionamiento?", "Sí, contamos con estacionamiento gratuito para socios por orden de llegada."),
     ("¿Ofrecen servicios de nutrición?", "Sí, contamos con asesorías nutricionales personalizadas y planes alimenticios para complementar tu entrenamiento."),
-    ("¿Puedo usar el gimnasio si me estoy recuperando de una lesión?", "Dependerá del tipo de lesión y autorización médica. Recomendamos traer certificado médico. El entrenamiento adaptado estará bajo tu propia responsabilidad."),
-    ("¿El gimnasio proporciona toallas o equipo personal?", "Toallas: No proporcionamos toallas (traer la propia es obligatorio por higiene).\nEquipo: Todo el equipo de entrenamiento (pesas, bandas, colchonetas, etc.) está disponible para los socios."),
+    ("¿Puedo usar el gimnasio si me estoy recuperando de una lesión?", "Dependerá del tipo de lesión y autorización médica. Recomendamos traer certificado médico."),
+    ("¿El gimnasio proporciona toallas o equipo personal?", "Toallas: No proporcionamos toallas (traer la propia es obligatorio por higiene).\nEquipo: Todo el equipo de entrenamiento está disponible para los socios."),
     ("¿Hay WiFi en el gimnasio?", "Sí, contamos con red WiFi gratuita para nuestros socios."),
-    ("¿Ofrecen bonos o promociones por referidos?", "Sí, si traes un amigo que se inscriba, ¡ambos reciben un Regalo Sorpresa exclusivo!"),
-    ("¿Cómo puedo cancelar mi membresía?", "Opción A: Desde nuestra App cuando quieras.\nOpción B: En Recepción avisando al menos 5 días antes del cierre del ciclo de pago.\nNota: Membresías trimestrales no son reembolsables.")
+    ("¿Ofrecen bonos o promociones por referidos?", "¡Sí! Si traes un amigo que se inscriba, ¡ambos reciben un Regalo Sorpresa exclusivo!"),
+    ("¿Cómo puedo cancelar mi membresía?", "Opción A: Desde nuestra App cuando quieras.\nOpción B: En Recepción avisando al menos 5 días antes del cierre del ciclo de pago.")
 ]
 
-faq_html = ""
-for q, a in faqs:
-    faq_html += f"""
+faq_html = "".join([f"""
     <details class="border-b border-slate-200 py-2">
-        <summary class="w-full py-6 flex justify-between items-center text-left hover:text-[#ff9933] transition-colors cursor-pointer font-bold text-lg text-slate-800">
-            {q}
-            <i class="fas fa-plus text-[#ff9933]"></i>
+        <summary class="w-full py-6 flex justify-between items-center text-left hover:text-[#ff9933] cursor-pointer font-bold text-lg text-slate-800">
+            {q} <i class="fas fa-plus text-[#ff9933]"></i>
         </summary>
-        <div class="pb-6 animate-in fade-in slide-in-from-top-2 duration-300 text-slate-600 leading-relaxed whitespace-pre-line">
-            {a}
-        </div>
+        <div class="pb-6 text-slate-600 leading-relaxed whitespace-pre-line">{a}</div>
     </details>
-    """
+""" for q, a in faqs])
 
 st.markdown(f"""
     <section id="faq" class="py-24 bg-slate-50 px-6">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-black italic uppercase tracking-tighter">Preguntas <span class="text-[#ff9933]">Frecuentes</span></h2>
-                <p class="text-slate-500 mt-2 font-medium tracking-tight">Todo lo que necesitas saber sobre IA GYM Montilla.</p>
+                <p class="text-slate-500 mt-2 font-medium">Todo lo que necesitas saber sobre IA GYM Montilla.</p>
             </div>
-            <div class="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100">
-                {faq_html}
-            </div>
+            <div class="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-slate-100">{faq_html}</div>
         </div>
     </section>
 """, unsafe_allow_html=True)
 
-# --- CTA FINAL CON FORMULARIO ---
+# --- CTA FINAL CON FORMULARIO STREAMLIT ---
 st.markdown("""
     <section id="contacto" class="py-24 px-6 bg-white">
         <div class="max-w-5xl mx-auto bg-slate-900 rounded-[3rem] p-12 text-white relative overflow-hidden shadow-2xl">
@@ -403,25 +405,25 @@ st.markdown("""
                     <p class="text-slate-300 text-xl mb-8 leading-relaxed font-medium">Exclusivo para residentes de Montilla. Clase de valoración gratuita.</p>
                     <div class="space-y-4 text-slate-400 font-bold uppercase tracking-wide text-sm">
                         <div class="flex items-center gap-4"><i class="fas fa-check-circle text-[#ff9933]"></i> Sin compromisos</div>
-                        <div class="flex items-center gap-4"><i class="fas fa-check-circle text-[#ff9933]"></i> Con monitor asignado</div>
+                        <div class="flex items-center gap-4"><i class="fas fa-check-circle text-[#ff9933]"></i> Monitor asignado</div>
                         <div class="flex items-center gap-4"><i class="fas fa-check-circle text-[#ff9933]"></i> Estacionamiento Gratis</div>
                     </div>
                 </div>
 """, unsafe_allow_html=True)
 
-# Formulario de Streamlit para funcionalidad real
+# Formulario Streamlit integrado
 with st.container():
     st.markdown('<div class="bg-white rounded-3xl p-8 text-slate-900 shadow-2xl relative z-20">', unsafe_allow_html=True)
     st.markdown('<h4 class="text-2xl font-black mb-6 text-center italic uppercase">Reserva tu prueba</h4>', unsafe_allow_html=True)
     with st.form("contact_form", clear_on_submit=True):
-        nombre = st.text_input("Nombre completo")
-        email = st.text_input("Email")
+        nombre = st.text_input("Nombre completo", placeholder="Tu nombre")
+        email = st.text_input("Email", placeholder="tu@email.com")
         submit = st.form_submit_button("AGENDAR MI PRUEBA")
         if submit:
             if nombre and email:
-                st.success("¡Reserva enviada! Te contactaremos pronto.")
+                st.success(f"¡Reserva lista, {nombre}! Nos pondremos en contacto contigo pronto.")
             else:
-                st.warning("Por favor rellena los campos.")
+                st.warning("Por favor, rellena todos los campos.")
     st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown("""
@@ -437,7 +439,7 @@ st.markdown("""
             <div class="col-span-2">
                 <div class="flex items-center gap-2 mb-6">
                     <div class="w-8 h-8 bg-[#ff9933] rounded flex items-center justify-center text-white font-black italic">IA</div>
-                    <span class="font-black text-lg tracking-tighter uppercase">IA<span class="text-[#ff9933]">GYM</span></span>
+                    <span class="font-black text-lg uppercase tracking-tighter">IA<span class="text-[#ff9933]">GYM</span></span>
                 </div>
                 <p class="text-slate-500 max-w-sm font-medium leading-relaxed">
                     El gimnasio líder en Montilla. Especialistas en transformación física, nutrición y entrenamiento de alta intensidad.
@@ -445,7 +447,7 @@ st.markdown("""
             </div>
             
             <div>
-                <h5 class="font-black mb-6 uppercase tracking-widest text-sm italic">Ubicación</h5>
+                <h5 class="font-black mb-6 uppercase text-sm italic tracking-widest">Ubicación</h5>
                 <ul class="space-y-4 text-slate-500 font-bold text-sm uppercase">
                     <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-[#ff9933]"></i> Montilla, Córdoba</li>
                     <li class="flex items-center gap-3"><i class="fas fa-phone text-[#ff9933]"></i> +34 612 345 678</li>
@@ -457,8 +459,8 @@ st.markdown("""
             </div>
 
             <div>
-                <h5 class="font-black mb-6 uppercase tracking-widest text-sm italic">Accesos</h5>
-                <ul class="space-y-4 text-slate-500 font-black text-xs uppercase tracking-wider">
+                <h5 class="font-black mb-6 uppercase text-sm italic tracking-widest">Accesos</h5>
+                <ul class="space-y-2 text-slate-500 font-black text-xs uppercase tracking-widest">
                     <li><a href="#programas" class="hover:text-[#ff9933]">Programas</a></li>
                     <li><a href="#planes" class="hover:text-[#ff9933]">Planes</a></li>
                     <li><a href="#clases" class="hover:text-[#ff9933]">Clases Grupales</a></li>
@@ -467,7 +469,7 @@ st.markdown("""
             </div>
         </div>
         
-        <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 flex flex-col md:row justify-between items-center gap-4">
+        <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-200 text-center">
             <p class="text-slate-400 text-sm font-bold">© 2027 IA GYM Montilla. Todos los derechos reservados.</p>
         </div>
     </footer>
