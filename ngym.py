@@ -9,7 +9,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# 2. INYECCIÓN DEL CONTADOR FLOTANTE (JS Nativo)
+# 2. INYECCIÓN DEL CONTADOR FLOTANTE (JS Nativo) Y CHAT
 # Esto crea una barra fija en la parte superior sin recargar Streamlit
 components.html("""
 <script>
@@ -43,6 +43,12 @@ components.html("""
             el.innerText = (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
         }, 1000);
     }
+</script>
+// Chat de Leadfit
+<script 
+  src="https://widgets.leadconnectorhq.com/loader.js"  
+  data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" 
+  data-widget-id="696fd61d639c14a5e9429cb7"   > 
 </script>
 """, height=0, width=0)
 
