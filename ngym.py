@@ -138,7 +138,7 @@ st.markdown("""
 <li><i class="fas fa-check-circle"></i> Medición de perímetros semanal</li>
 </ul>
 </div>
-<a href="#reserva" class="btn-premium" style="margin-top: 2rem;">QUIERO ACCEDER ➔</a>
+<a href="https://link.fastpaydirect.com/payment-link/6998998a44f21fc492d9974b" class="btn-premium" style="margin-top: 2rem;">QUIERO ACCEDER ➔</a>
 </div>
 <div class="card">
 <div>
@@ -153,7 +153,7 @@ st.markdown("""
 <li><i class="fas fa-check-circle"></i> Seguimiento progresivo mensual</li>
 </ul>
 </div>
-<a href="#reserva" class="btn-premium" style="margin-top: 2rem;">¡LO NECESITO AHORA! ➔</a>
+<a href="https://link.fastpaydirect.com/payment-link/699899ebe8a8d571771bb502" class="btn-premium" style="margin-top: 2rem;">¡LO NECESITO AHORA! ➔</a>
 </div>
 </div>
 """, unsafe_allow_html=True)
