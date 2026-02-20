@@ -44,12 +44,6 @@ components.html("""
         }, 1000);
     }
 </script>
-// Chat de Leadfit
-<script 
-  src="https://widgets.leadconnectorhq.com/loader.js"  
-  data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" 
-  data-widget-id="696fd61d639c14a5e9429cb7"   > 
-</script>
 """, height=0, width=0)
 
 # 3. ESTILOS CSS PREMIUM DARK MODE
@@ -313,3 +307,17 @@ Lunes a Viernes: 07:00 - 22:00 hs
 </p>
 </div>
 """, unsafe_allow_html=True)
+# 12. INYECCIÓN DEL WIDGET DE CHAT (LeadConnector)
+# Se inyecta en el "parent document" para que flote libremente fuera del iframe de Streamlit
+components.html("""
+<script>
+    if (!window.parent.document.getElementById('leadconnector-widget')) {
+        const script = window.parent.document.createElement('script');
+        script.id = 'leadconnector-widget';
+        script.src = 'https://widgets.leadconnectorhq.com/loader.js';
+        script.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
+        script.setAttribute('data-widget-id', '696fd61d639c14a5e9429cb7');
+        window.parent.document.body.appendChild(script);
+    }
+</script>
+""", height=0, width=0)
