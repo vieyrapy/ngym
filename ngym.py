@@ -275,20 +275,28 @@ Déjanos tus datos si deseas probar <b>1 día GRATIS</b> (residentes de Montilla
 </p>
 """, unsafe_allow_html=True)
 
-with st.form("contacto_form"):
-    st.markdown("<h3 style='text-align:center; font-weight:900; color:#ffffff; margin-bottom: 1.5rem; font-style: italic; text-transform: uppercase;'>Completa tus datos</h3>", unsafe_allow_html=True)
-    nombre = st.text_input("👤 Nombre completo")
-    telefono = st.text_input("📱 Teléfono (Móvil)")
-    email = st.text_input("✉️ Correo Electrónico")
-    
-    st.markdown("<br>", unsafe_allow_html=True)
-    submit = st.form_submit_button("SOLICITAR MI PLAZA ➔", type="primary", use_container_width=True)
-    
-    if submit:
-        if nombre and telefono and email:
-            st.success(f"¡Solicitud enviada, {nombre}! Nos comunicaremos al {telefono} lo antes posible para confirmar.")
-        else:
-            st.warning("⚠️ Por favor, completa los tres campos obligatorios para poder contactarte.")
+# Inyección del formulario del CRM (LeadConnector)
+components.html("""
+<iframe
+    src="https://api.leadconnectorhq.com/widget/form/Eir9v9Qsuwn1L4oW5GzR"
+    style="width:100%;height:100%;border:none;border-radius:3px"
+    id="inline-Eir9v9Qsuwn1L4oW5GzR" 
+    data-layout="{'id':'INLINE'}"
+    data-trigger-type="alwaysShow"
+    data-trigger-value=""
+    data-activation-type="alwaysActivated"
+    data-activation-value=""
+    data-deactivation-type="neverDeactivate"
+    data-deactivation-value=""
+    data-form-name="Formulario Web"
+    data-height="432"
+    data-layout-iframe-id="inline-Eir9v9Qsuwn1L4oW5GzR"
+    data-form-id="Eir9v9Qsuwn1L4oW5GzR"
+    title="Formulario Web"
+        >
+</iframe>
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
+""", height=450)
 
 st.divider()
 
